@@ -26,7 +26,7 @@ class AddGardenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,13 +48,17 @@ class AddGardenViewController: UIViewController {
             let collectionViewImgs = collectionViewImg.image
                 
                 
-                AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: <#T##UIImage#>, backgroundImgData: <#T##UIImage#>, collectionViewImgData: <#T##UIImage#>, completion: <#T##((Garden?) -> Void)?##((Garden?) -> Void)?##(Garden?) -> Void#>)
-                
-            }
+                AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, collectionViewImg: (collectionViewImgs)!, completion: { (_) in
+                    
+                })
             dismissViewControllerAnimated(true, completion: nil)
         } else {
-        print ("No garden info was added")
-        
+       
+            let alertController = UIAlertController(title: "Missing Garden Information", message: "Please check your info and try again.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+            
+            presentViewController(alertController, animated: true, completion: nil)
+
     }
     
 }
