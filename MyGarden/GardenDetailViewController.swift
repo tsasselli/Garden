@@ -8,18 +8,30 @@
 
 import UIKit
 
-class GardenListViewController: UIViewController {
+class GardenDetailViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var backgroundImageLabel: UIImageView!
+    @IBOutlet weak var profImageLabel: UIImageView!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var contactNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var productsLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    
+    
+    
     
 
     /*

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6401074C1D78A098000B3630 /* GardenListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074B1D78A098000B3630 /* GardenListController.swift */; };
+		6401074E1D78A187000B3630 /* AddGardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074D1D78A187000B3630 /* AddGardenViewController.swift */; };
 		64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9841B1D762A4900872B7C /* AppDelegate.swift */; };
 		64B984211D762A4900872B7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B9841F1D762A4900872B7C /* Main.storyboard */; };
 		64B984231D762A4900872B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B984221D762A4900872B7C /* Assets.xcassets */; };
@@ -18,10 +20,12 @@
 		64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843D1D76583800872B7C /* CloudKitManager.swift */; };
 		64B984401D7663E400872B7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843F1D7663E400872B7C /* UserController.swift */; };
 		64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984411D7664A300872B7C /* GardenDetailController.swift */; };
-		64B984461D7667A500872B7C /* GardenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984451D7667A500872B7C /* GardenListViewController.swift */; };
+		64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984451D7667A500872B7C /* GardenDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6401074B1D78A098000B3630 /* GardenListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenListController.swift; sourceTree = "<group>"; };
+		6401074D1D78A187000B3630 /* AddGardenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGardenViewController.swift; sourceTree = "<group>"; };
 		64B984181D762A4900872B7C /* MyGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B9841B1D762A4900872B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B984201D762A4900872B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,7 +40,7 @@
 		64B9843D1D76583800872B7C /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		64B9843F1D7663E400872B7C /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		64B984411D7664A300872B7C /* GardenDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailController.swift; sourceTree = "<group>"; };
-		64B984451D7667A500872B7C /* GardenListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenListViewController.swift; sourceTree = "<group>"; };
+		64B984451D7667A500872B7C /* GardenDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +108,8 @@
 		64B9842F1D762AF100872B7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				64B984451D7667A500872B7C /* GardenListViewController.swift */,
+				64B984451D7667A500872B7C /* GardenDetailViewController.swift */,
+				6401074D1D78A187000B3630 /* AddGardenViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 				64B9843F1D7663E400872B7C /* UserController.swift */,
 				64B9843B1D76571500872B7C /* AddGardenController.swift */,
 				64B984411D7664A300872B7C /* GardenDetailController.swift */,
+				6401074B1D78A098000B3630 /* GardenListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -206,12 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B984401D7663E400872B7C /* UserController.swift in Sources */,
+				6401074E1D78A187000B3630 /* AddGardenViewController.swift in Sources */,
 				64B984351D762CAD00872B7C /* Garden.swift in Sources */,
 				64B984331D762B1300872B7C /* User.swift in Sources */,
 				64B9843C1D76571500872B7C /* AddGardenController.swift in Sources */,
 				64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */,
-				64B984461D7667A500872B7C /* GardenListViewController.swift in Sources */,
+				64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */,
 				64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */,
+				6401074C1D78A098000B3630 /* GardenListController.swift in Sources */,
 				64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
