@@ -27,10 +27,12 @@ class AddGarderController {
         }
     }
     
-    func createNewGarden(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?, image: UIImage, completion: ((Garden) -> Void)?) {
-        guard let imageData: NSData = UIImageJPEGRepresentation(image, 0.8) else { return }
+    func createNewGarden(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?, profileImgData: UIImage, backgroundImgData: UIImage, collectionViewImgData: UIImage, completion: ((Garden?) -> Void)?) {
+        guard let profImageData: NSData = UIImageJPEGRepresentation(profileImgData, 0.8),
+                  backgroundImgData: NSData = UIImageJPEGRepresentation(backgroundImgData, 0.8),
+                  collectionViewImgData: NSData = UIImageJPEGRepresentation(collectionViewImgData, 0.8) else { return }
         
-        guard let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdLocation, profileImgData: imageData, backgroundImgData: imageData, collectionViewImgData: [imageData]) else { return }
+        guard let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdLocation, profileImgData: profImageData, backgroundImgData: backgroundImgData, collectionViewImgData: [collectionViewImgData]) else { return }
         
         guard let record = garden.cloudKitRecord else { return }
         
@@ -38,12 +40,13 @@ class AddGarderController {
             guard let record = record else {
                 if let error = error {
                     NSLog("Error saving new post to CloudKit: \(error)")
-                    return
                 }
-                completion?(garden)
+                
+                completion?(nil)
                 return
             }
             garden.cloudKitRecordID = record.recordID
+            completion?(garden)
         }
     }
 }

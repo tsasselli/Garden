@@ -48,9 +48,6 @@ class Garden {
         return [UIImage(data: collectViewImgData)!]
     }
     
-    
-    
-    
     init?(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?, profileImgData: NSData?, backgroundImgData: NSData?, collectionViewImgData: [NSData]) {
         
         self.gdName = gdName
@@ -75,12 +72,9 @@ class Garden {
         return fileURL
     }
     
+   
     
-    
-    var cloudKitRecordID: CKRecordID?
-    var cloudKitRecord: CKRecord?
-    
-    convenience init?(record: CKRecord) {
+      convenience init?(record: CKRecord) {
         guard let gdName = record[Garden.gdNameKey] as? String,
             gdBio = record[Garden.gdBioKey] as? String,
             gdProducts = record[Garden.gdPhoneKey] as? String,
@@ -94,5 +88,21 @@ class Garden {
         self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profileImgData, backgroundImgData: backgroundImgData, collectionViewImgData: collectViewImgData)
     }
     
+    var cloudKitRecordID: CKRecordID?
     
+    var cloudKitRecord: CKRecord? {
+        // convert to CKRecord & return
+        let record = CKRecord(recordType: Garden.typeKey)
+        record[Garden.gdNameKey] = gdName
+        record[Garden.gdBioKey] = gdBio
+        record[Garden.gdProductsKey] = gdProducts
+        record[Garden.gdLocationKey] = gdLocation
+        record[Garden.gdContactKey] = gdContact
+        record[Garden.gdPhoneKey] = gdPhone
+        record[Garden.profileImgKey] = profileImgData
+        record[Garden.backgroundImgKey] = backgroundImgData
+        record[Garden.collectViewImgKey] = collectViewImgData
+        
+        return record
+    }
 }
