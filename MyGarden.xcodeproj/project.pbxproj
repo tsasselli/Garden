@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9841B1D762A4900872B7C /* AppDelegate.swift */; };
+		64B984211D762A4900872B7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B9841F1D762A4900872B7C /* Main.storyboard */; };
+		64B984231D762A4900872B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B984221D762A4900872B7C /* Assets.xcassets */; };
+		64B984261D762A4900872B7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B984241D762A4900872B7C /* LaunchScreen.storyboard */; };
+		64B984331D762B1300872B7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984321D762B1300872B7C /* User.swift */; };
+		64B984351D762CAD00872B7C /* Garden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984341D762CAD00872B7C /* Garden.swift */; };
+		64B984381D7637EF00872B7C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B984371D7637EF00872B7C /* CloudKit.framework */; };
+		64B9843C1D76571500872B7C /* AddGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843B1D76571500872B7C /* AddGardenController.swift */; };
+		64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843D1D76583800872B7C /* CloudKitManager.swift */; };
+		64B984401D7663E400872B7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843F1D7663E400872B7C /* UserController.swift */; };
+		64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984411D7664A300872B7C /* GardenDetailController.swift */; };
+		64B984461D7667A500872B7C /* GardenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984451D7667A500872B7C /* GardenListViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		64B984181D762A4900872B7C /* MyGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B9841B1D762A4900872B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64B984201D762A4900872B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64B984221D762A4900872B7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64B984251D762A4900872B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64B984271D762A4900872B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B984321D762B1300872B7C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		64B984341D762CAD00872B7C /* Garden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Garden.swift; sourceTree = "<group>"; };
+		64B984361D7637E700872B7C /* MyGarden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyGarden.entitlements; sourceTree = "<group>"; };
+		64B984371D7637EF00872B7C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		64B9843B1D76571500872B7C /* AddGardenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGardenController.swift; sourceTree = "<group>"; };
+		64B9843D1D76583800872B7C /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		64B9843F1D7663E400872B7C /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		64B984411D7664A300872B7C /* GardenDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailController.swift; sourceTree = "<group>"; };
+		64B984451D7667A500872B7C /* GardenListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenListViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64B984151D762A4900872B7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B984381D7637EF00872B7C /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64B9840F1D762A4900872B7C = {
+			isa = PBXGroup;
+			children = (
+				64B984371D7637EF00872B7C /* CloudKit.framework */,
+				64B9841A1D762A4900872B7C /* MyGarden */,
+				64B984191D762A4900872B7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64B984191D762A4900872B7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64B984181D762A4900872B7C /* MyGarden.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64B9841A1D762A4900872B7C /* MyGarden */ = {
+			isa = PBXGroup;
+			children = (
+				64B984361D7637E700872B7C /* MyGarden.entitlements */,
+				64B984311D762AFF00872B7C /* Model */,
+				64B984301D762AF700872B7C /* Controller */,
+				64B9842F1D762AF100872B7C /* View */,
+				64B9842D1D762AC600872B7C /* StoryBoard */,
+			);
+			path = MyGarden;
+			sourceTree = "<group>";
+		};
+		64B9842D1D762AC600872B7C /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				64B9841F1D762A4900872B7C /* Main.storyboard */,
+				64B984241D762A4900872B7C /* LaunchScreen.storyboard */,
+				64B9842E1D762ADC00872B7C /* Utility */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		64B9842E1D762ADC00872B7C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				64B984271D762A4900872B7C /* Info.plist */,
+				64B984221D762A4900872B7C /* Assets.xcassets */,
+				64B9841B1D762A4900872B7C /* AppDelegate.swift */,
+				64B9843D1D76583800872B7C /* CloudKitManager.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		64B9842F1D762AF100872B7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64B984451D7667A500872B7C /* GardenListViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		64B984301D762AF700872B7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64B9843F1D7663E400872B7C /* UserController.swift */,
+				64B9843B1D76571500872B7C /* AddGardenController.swift */,
+				64B984411D7664A300872B7C /* GardenDetailController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		64B984311D762AFF00872B7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64B984321D762B1300872B7C /* User.swift */,
+				64B984341D762CAD00872B7C /* Garden.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64B984171D762A4900872B7C /* MyGarden */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B9842A1D762A4900872B7C /* Build configuration list for PBXNativeTarget "MyGarden" */;
+			buildPhases = (
+				64B984141D762A4900872B7C /* Sources */,
+				64B984151D762A4900872B7C /* Frameworks */,
+				64B984161D762A4900872B7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyGarden;
+			productName = MyGarden;
+			productReference = 64B984181D762A4900872B7C /* MyGarden.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64B984101D762A4900872B7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = TravisSasselli;
+				TargetAttributes = {
+					64B984171D762A4900872B7C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EHX32HK787;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 64B984131D762A4900872B7C /* Build configuration list for PBXProject "MyGarden" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64B9840F1D762A4900872B7C;
+			productRefGroup = 64B984191D762A4900872B7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64B984171D762A4900872B7C /* MyGarden */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64B984161D762A4900872B7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B984261D762A4900872B7C /* LaunchScreen.storyboard in Resources */,
+				64B984231D762A4900872B7C /* Assets.xcassets in Resources */,
+				64B984211D762A4900872B7C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64B984141D762A4900872B7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B984401D7663E400872B7C /* UserController.swift in Sources */,
+				64B984351D762CAD00872B7C /* Garden.swift in Sources */,
+				64B984331D762B1300872B7C /* User.swift in Sources */,
+				64B9843C1D76571500872B7C /* AddGardenController.swift in Sources */,
+				64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */,
+				64B984461D7667A500872B7C /* GardenListViewController.swift in Sources */,
+				64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */,
+				64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		64B9841F1D762A4900872B7C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64B984201D762A4900872B7C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64B984241D762A4900872B7C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64B984251D762A4900872B7C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64B984281D762A4900872B7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64B984291D762A4900872B7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64B9842B1D762A4900872B7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyGarden/MyGarden.entitlements;
+				INFOPLIST_FILE = MyGarden/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsasselli.MyGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		64B9842C1D762A4900872B7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyGarden/MyGarden.entitlements;
+				INFOPLIST_FILE = MyGarden/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsasselli.MyGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64B984131D762A4900872B7C /* Build configuration list for PBXProject "MyGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B984281D762A4900872B7C /* Debug */,
+				64B984291D762A4900872B7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64B9842A1D762A4900872B7C /* Build configuration list for PBXNativeTarget "MyGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B9842B1D762A4900872B7C /* Debug */,
+				64B9842C1D762A4900872B7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64B984101D762A4900872B7C /* Project object */;
+}
