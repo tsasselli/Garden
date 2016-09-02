@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6401074C1D78A098000B3630 /* GardenListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074B1D78A098000B3630 /* GardenListController.swift */; };
 		6401074E1D78A187000B3630 /* AddGardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074D1D78A187000B3630 /* AddGardenViewController.swift */; };
+		64AC04951D78FE4F00A772F6 /* GardenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AC04941D78FE4F00A772F6 /* GardenCollectionViewController.swift */; };
 		64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9841B1D762A4900872B7C /* AppDelegate.swift */; };
 		64B984211D762A4900872B7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B9841F1D762A4900872B7C /* Main.storyboard */; };
 		64B984231D762A4900872B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B984221D762A4900872B7C /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		6401074B1D78A098000B3630 /* GardenListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenListController.swift; sourceTree = "<group>"; };
 		6401074D1D78A187000B3630 /* AddGardenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGardenViewController.swift; sourceTree = "<group>"; };
+		64AC04941D78FE4F00A772F6 /* GardenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenCollectionViewController.swift; sourceTree = "<group>"; };
 		64B984181D762A4900872B7C /* MyGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B9841B1D762A4900872B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64B984201D762A4900872B7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				64B984451D7667A500872B7C /* GardenDetailViewController.swift */,
+				64AC04941D78FE4F00A772F6 /* GardenCollectionViewController.swift */,
 				6401074D1D78A187000B3630 /* AddGardenViewController.swift */,
 			);
 			name = View;
@@ -221,6 +224,7 @@
 				64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */,
 				6401074C1D78A098000B3630 /* GardenListController.swift in Sources */,
 				64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */,
+				64AC04951D78FE4F00A772F6 /* GardenCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
