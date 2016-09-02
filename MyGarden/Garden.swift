@@ -29,26 +29,26 @@ class Garden {
     var gdContact: String?
     var gdPhone: String?
     
-    var profileImgData: NSData?
+//    var profileImgData: NSData?
+//    
+//    var profileImg: UIImage? {
+//        guard let profileImgData = profileImgData else { return nil }
+//        return UIImage(data: profileImgData)
+//    }
+//    var backgroundImgData: NSData?
+//    
+//    var backgroundImg: UIImage? {
+//        guard let backgroundImgData = backgroundImgData else { return nil }
+//        return UIImage(data: backgroundImgData)
+//    }
+//    var collectViewImgData: NSData?
+//    
+//    var collectionViewImg: [UIImage]  {
+//        guard let collectViewImgData = self.collectViewImgData else { return [] }
+//        return [UIImage(data: collectViewImgData)!]
+//    }
     
-    var profileImg: UIImage? {
-        guard let profileImgData = profileImgData else { return nil }
-        return UIImage(data: profileImgData)
-    }
-    var backgroundImgData: NSData?
-    
-    var backgroundImg: UIImage? {
-        guard let backgroundImgData = backgroundImgData else { return nil }
-        return UIImage(data: backgroundImgData)
-    }
-    var collectViewImgData: NSData?
-    
-    var collectionViewImg: [UIImage]  {
-        guard let collectViewImgData = self.collectViewImgData else { return [] }
-        return [UIImage(data: collectViewImgData)!]
-    }
-    
-    init?(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?, profileImgData: NSData?, backgroundImgData: NSData?, collectionViewImgData: [NSData]) {
+    init?(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String? /*profileImgData: NSData?, backgroundImgData: NSData?, collectionViewImgData: [NSData]*/) {
         
         self.gdName = gdName
         self.gdBio = gdBio
@@ -56,21 +56,21 @@ class Garden {
         self.gdLocation = gdLocation
         self.gdContact = gdContact
         self.gdPhone = gdPhone
-        self.profileImgData = profileImgData
-        self.backgroundImgData = backgroundImgData
+      //  self.profileImgData = profileImgData
+       // self.backgroundImgData = backgroundImgData
     }
     
-    private var temporaryPhotoURL: NSURL {
-        
-        let temporaryDirectory = NSTemporaryDirectory()
-        let temporaryDirectoryURL = NSURL(fileURLWithPath: temporaryDirectory)
-        let fileURL = temporaryDirectoryURL.URLByAppendingPathComponent(NSUUID().UUIDString).URLByAppendingPathExtension("jpg")
-        
-        profileImgData?.writeToURL(fileURL, atomically: true)
-        backgroundImgData?.writeToURL(fileURL, atomically: true)
-        collectViewImgData?.writeToURL(fileURL, atomically: true)
-        return fileURL
-    }
+//    private var temporaryPhotoURL: NSURL {
+//        
+//        let temporaryDirectory = NSTemporaryDirectory()
+//        let temporaryDirectoryURL = NSURL(fileURLWithPath: temporaryDirectory)
+//        let fileURL = temporaryDirectoryURL.URLByAppendingPathComponent(NSUUID().UUIDString).URLByAppendingPathExtension("jpg")
+//        
+//        profileImgData?.writeToURL(fileURL, atomically: true)
+//        backgroundImgData?.writeToURL(fileURL, atomically: true)
+//        collectViewImgData?.writeToURL(fileURL, atomically: true)
+//        return fileURL
+//    }
     
    
     
@@ -80,12 +80,12 @@ class Garden {
             gdProducts = record[Garden.gdPhoneKey] as? String,
             gdLocation = record[Garden.gdLocationKey] as? String,
             gdContact = record[Garden.gdContactKey] as? String,
-            gdPhone = record[Garden.gdPhoneKey] as? String,
-            profileImgData = record[Garden.profileImgKey] as? NSData,
+            gdPhone = record[Garden.gdPhoneKey] as? String
+         /*   profileImgData = record[Garden.profileImgKey] as? NSData,
             backgroundImgData = record[Garden.backgroundImgKey] as? NSData,
-            collectViewImgData = record[Garden.collectViewImgKey] as? [NSData] where record.recordType == Garden.typeKey else { return nil}
+            collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ where record.recordType == Garden.typeKey else { return nil}
         
-        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profileImgData, backgroundImgData: backgroundImgData, collectionViewImgData: collectViewImgData)
+        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone/* profileImgData: profileImgData, backgroundImgData: backgroundImgData, collectionViewImgData: collectViewImgData)*/)
     }
     
     var cloudKitRecordID: CKRecordID?
@@ -99,9 +99,9 @@ class Garden {
         record[Garden.gdLocationKey] = gdLocation
         record[Garden.gdContactKey] = gdContact
         record[Garden.gdPhoneKey] = gdPhone
-        record[Garden.profileImgKey] = profileImgData
+      /*  record[Garden.profileImgKey] = profileImgData
         record[Garden.backgroundImgKey] = backgroundImgData
-        record[Garden.collectViewImgKey] = collectViewImgData
+        record[Garden.collectViewImgKey] = collectViewImgData */
         
         return record
     }

@@ -25,6 +25,7 @@ class GardenDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(GardenDetailController.sharedController.fetchNewRecords())
         
         
     }

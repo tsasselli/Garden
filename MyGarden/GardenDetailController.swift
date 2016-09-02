@@ -26,7 +26,24 @@ class GardenDetailController {
         }
     }
     
-    
-
-    
+    func fetchNewRecords(completion: ((NSError?) -> Void)? = nil) {
+        let predicate = NSPredicate(value: true)
+        
+        cloudKitManager.fetchRecordsWithType(Garden.typeKey, predicate: predicate, recordFetchedBlock: { (_) in
+            
+        }) { (records, error) in
+            if let error = error {
+                print(" Error: Unable to fetch garden info from cloudKit. \(error.localizedDescription)")
+                return
+            }
+            guard let records = records else { return }
+            
+            self.garden = records.flatMap { Garden(record: $0) }
+        }
+    }
 }
+
+
+
+
+
