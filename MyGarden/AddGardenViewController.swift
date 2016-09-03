@@ -24,6 +24,12 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var profileTapGesture: UITapGestureRecognizer!
     
+    var imagePicker = UIImagePickerController()
+    
+//    var imagePicked = 0
+    
+    var isFromFirst: Bool = false
+    
     var garden: Garden?
     
     
@@ -31,7 +37,9 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         
-    
+        imagePicker.delegate = self
+        
+        
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: addGardenControllerDidRefreshNotification, object: nil)
@@ -39,62 +47,58 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func gardensWereUpdated (){
-//        NSNotification) {
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//        
-//            })
-
+        //        NSNotification) {
+        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //
+        //            })
+        
     }
-
+    
     
     @IBAction func createGarden(sender: AnyObject) {
         
-            let gardenName = nameTextField.text
-            let gardenBio = descriptionTextField.text
-            let product = productTextField.text
-            let location = LocationTextField.text
-            let contact = contactNameTextField.text
-            let phone = phoneTextField.text
-           // let profImg = profileImg.image
-           // let backgroundImgs = backgroundImg.image
-           // let collectionViewImgs = collectionViewImg.image
+        let gardenName = nameTextField.text
+        let gardenBio = descriptionTextField.text
+        let product = productTextField.text
+        let location = LocationTextField.text
+        let contact = contactNameTextField.text
+        let phone = phoneTextField.text
+        // let profImg = profileImg.image
+        // let backgroundImgs = backgroundImg.image
+        // let collectionViewImgs = collectionViewImg.image
+        
+        
+        AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, /*profileImgData: profImg!, backgroundImg: backgroundImgs!, collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
             
-            
-            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, /*profileImgData: profImg!, backgroundImg: backgroundImgs!, collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
-                
-            })
-            dismissViewControllerAnimated(true, completion: nil)
-//         //else {
-//            
-//            let alertController = UIAlertController(title: "Missing Garden Information", message: "Please check your info and try again.", preferredStyle: .Alert)
-//            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
-//            
-//            presentViewController(alertController, animated: true, completion: nil)
-//            
-//        }
+        })
+        dismissViewControllerAnimated(true, completion: nil)
+        //         //else {
+        //
+        //            let alertController = UIAlertController(title: "Missing Garden Information", message: "Please check your info and try again.", preferredStyle: .Alert)
+        //            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        //
+        //            presentViewController(alertController, animated: true, completion: nil)
+        //
+        //        }
         
     }
     
     
     @IBAction func backgroundImgTapped(sender: AnyObject) {
+        self.isFromFirst = true
         presentActionSheet()
-        
     }
     
     
     
     @IBAction func profileImgTapped(sender: AnyObject) {
+        self.isFromFirst = false
+        
         presentActionSheet()
     }
-
-    
-//     func backgroundImgPickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-//        backgroundImg.image = image
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
     
     
+      
     
     func presentActionSheet () {
         let imagePicker = UIImagePickerController()
@@ -127,22 +131,31 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     
-
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-              profileImg.image = image
-              dismissViewControllerAnimated(true, completion: nil)
+        
+         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        
+        if self.isFromFirst {
+            self.profileImg.image = image
+        } else {
+            backgroundImg.image = image
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+
     }
     
     
     
-     // MARK: - Navigation
-     
-
-//     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//    
-//     
-//     }
-// 
-
+    
+    // MARK: - Navigation
+    
+    
+    //     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //
+    //
+    //     }
+    //
+    
 }

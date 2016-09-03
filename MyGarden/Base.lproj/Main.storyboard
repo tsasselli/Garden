@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="trailing" secondItem="thn-v7-n4X" secondAttribute="trailing" id="rcN-CQ-tC9"/>
                                 </constraints>
                             </scrollView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="td3-3b-1qL">
+                            <imageView tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="td3-3b-1qL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="176"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" link="YES" image="YES"/>
@@ -143,7 +143,7 @@
                                     <outletCollection property="gestureRecognizers" destination="0jM-pr-MBf" appends="YES" id="7id-Ru-e1x"/>
                                 </connections>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-cM-noP">
+                            <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-cM-noP">
                                 <rect key="frame" x="0.0" y="172" width="68" height="68"/>
                                 <color key="backgroundColor" red="0.14606979980000001" green="1" blue="0.2114186901" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
