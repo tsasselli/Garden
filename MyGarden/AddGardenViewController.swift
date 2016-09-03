@@ -98,7 +98,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     
-      
+    
     
     func presentActionSheet () {
         let imagePicker = UIImagePickerController()
@@ -137,9 +137,9 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
          guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
         if self.isFromFirst {
-            self.profileImg.image = image
+            self.backgroundImg.image = image
         } else {
-            backgroundImg.image = image
+            profileImg.image = image
         }
         
         dismissViewControllerAnimated(true, completion: nil)
