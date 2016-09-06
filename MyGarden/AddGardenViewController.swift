@@ -26,20 +26,15 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     var imagePicker = UIImagePickerController()
     
-//    var imagePicked = 0
-    
     var isFromFirst: Bool = false
     
     var garden: Garden?
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         
         imagePicker.delegate = self
-        
-        
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: addGardenControllerDidRefreshNotification, object: nil)
@@ -47,11 +42,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func gardensWereUpdated (){
-        //        NSNotification) {
-        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        //
-        //            })
-        
+      
     }
     
     
@@ -63,12 +54,12 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         let location = LocationTextField.text
         let contact = contactNameTextField.text
         let phone = phoneTextField.text
-        // let profImg = profileImg.image
-        // let backgroundImgs = backgroundImg.image
+         let profImg = profileImg.image
+         let backgroundImgs = backgroundImg.image
         // let collectionViewImgs = collectionViewImg.image
         
         
-        AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, /*profileImgData: profImg!, backgroundImg: backgroundImgs!, collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
+        AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
             
         })
         dismissViewControllerAnimated(true, completion: nil)

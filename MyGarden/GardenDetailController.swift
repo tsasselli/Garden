@@ -13,6 +13,10 @@ public let GardenDetailControllerDidRefreshNotification = "GardenDetailControlle
 
 class GardenDetailController {
     
+    init () {
+   print( fetchNewRecords()) 
+    }
+    
     static let sharedController = GardenDetailController()
     private let cloudKitManager = CloudKitManager()
     
@@ -29,13 +33,15 @@ class GardenDetailController {
     func fetchNewRecords(completion: ((NSError?) -> Void)? = nil) {
         let predicate = NSPredicate(value: true)
         
-        cloudKitManager.fetchRecordsWithType(Garden.typeKey, predicate: predicate, recordFetchedBlock: { (_) in
+        cloudKitManager.fetchRecordsWithType(Garden.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
             
         }) { (records, error) in
             if let error = error {
-                print(" Error: Unable to fetch garden info from cloudKit. \(error.localizedDescription)")
+                print(" Error: Unable to fetch Garden record from cloudKit. \(error.localizedDescription)")
+                
                 return
             }
+            
             guard let records = records else { return }
             
             self.garden = records.flatMap { Garden(record: $0) }

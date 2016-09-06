@@ -126,6 +126,13 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE1-0Q-nkY">
+                                        <rect key="frame" x="237" y="253" width="91" height="30"/>
+                                        <state key="normal" title="to detail view"/>
+                                        <connections>
+                                            <segue destination="DYP-eE-e5R" kind="show" id="XzP-uc-Iaf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="thn-v7-n4X" firstAttribute="top" secondItem="3Cp-EW-nWA" secondAttribute="top" constant="16" id="5Eo-Dl-lxP"/>
@@ -256,7 +263,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCS-4n-cTO">
                                 <rect key="frame" x="0.0" y="308" width="600" height="292"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ECW-Qb-E5u">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ECW-Qb-E5u">
                                         <rect key="frame" x="8" y="62" width="120" height="158"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name Label:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ee5-KO-JUM">
@@ -310,6 +317,7 @@
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pfd-nC-tzC">
                                 <rect key="frame" x="0.0" y="248" width="594" height="60"/>
+                                <color key="backgroundColor" red="0.082712369987091416" green="0.28078965519706467" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GW8-R6-p1W"/>
                                 </constraints>
@@ -385,4 +393,7 @@
             <point key="canvasLocation" x="500" y="409"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XzP-uc-Iaf"/>
+    </inferredMetricsTieBreakers>
 </document>
