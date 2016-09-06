@@ -10,23 +10,26 @@ import UIKit
 
 class GardenListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+       
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenListControllerDidRefreshNotification , object: nil)
-        
+
+     //
+//        let nc = NSNotificationCenter.defaultCenter()
+//        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenListControllerDidRefreshNotification , object: nil)
+//        
     }
     
-    
-    func gardensWereUpdated(notification: NSNotification) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-           self.tableView.reloadData()
-        })
-    }
+//    
+//    func gardensWereUpdated(notification: NSNotification) {
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//           self.tableView.reloadData()
+//        })
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("", forIndexPath: indexPath)

@@ -60,7 +60,7 @@ class Garden {
         self.backgroundImgData = backgroundImgData
     }
     
-    private var temporaryPhotoURL: NSURL {
+    private var temporaryBGPhotoURL: NSURL {
         
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = NSURL(fileURLWithPath: temporaryDirectory)
@@ -68,7 +68,16 @@ class Garden {
         
         profileImgData?.writeToURL(fileURL, atomically: true)
         backgroundImgData?.writeToURL(fileURL, atomically: true)
-        //collectViewImgData?.writeToURL(fileURL, atomically: true)
+        return fileURL
+    }
+    
+    private var temporaryProfilePhotoURL: NSURL {
+        
+        let temporaryDirectory = NSTemporaryDirectory()
+        let temporaryDirectoryURL = NSURL(fileURLWithPath: temporaryDirectory)
+        let fileURL = temporaryDirectoryURL.URLByAppendingPathComponent(NSUUID().UUIDString).URLByAppendingPathExtension("jpg")
+        
+        profileImgData?.writeToURL(fileURL, atomically: true)
         return fileURL
     }
     
@@ -83,7 +92,9 @@ class Garden {
             gdPhone = record[Garden.gdPhoneKey] as? String,
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,
             backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset
-           /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ where record.recordType == Garden.typeKey else { return nil}
+           /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
+            print("failable Init failed")
+            return nil}
         
         let profilePhotoData = NSData(contentsOfURL: profileImgAsset.fileURL)
         let backroundPhotoData = NSData(contentsOfURL: backgroundImgAsset.fileURL)
@@ -102,8 +113,8 @@ class Garden {
         record[Garden.gdLocationKey] = gdLocation
         record[Garden.gdContactKey] = gdContact
         record[Garden.gdPhoneKey] = gdPhone
-        record[Garden.profileImgKey] = profileImgData
-        record[Garden.backgroundImgKey] = backgroundImgData
+        record[Garden.profileImgKey] = CKAsset(fileURL: temporaryBGPhotoURL)
+        record[Garden.backgroundImgKey] = CKAsset(fileURL: temporaryProfilePhotoURL)
        /* record[Garden.collectViewImgKey] = collectViewImgData */
         
         return record

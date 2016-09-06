@@ -25,8 +25,22 @@ class GardenDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(GardenDetailController.sharedController.fetchNewRecords())
+//        print(GardenDetailController.sharedController.fetchRecords())
+        _ = GardenDetailController()
         
+        let gardenArray = GardenDetailController.sharedController.garden
+        
+        for garden in gardenArray {
+            nameLabel.text = garden.gdName
+            backgroundImageLabel.image = garden.backgroundImg
+            profImageLabel.image = garden.profileImg
+            phoneLabel.text = garden.gdPhone
+            contactNameLabel.text = garden.gdContact
+            descriptionLabel.text = garden.gdBio
+            productsLabel.text = garden.gdProducts
+            locationLabel.text = garden.gdLocation
+            
+        }
         
     }
     

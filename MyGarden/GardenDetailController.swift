@@ -14,7 +14,9 @@ public let GardenDetailControllerDidRefreshNotification = "GardenDetailControlle
 class GardenDetailController {
     
     init () {
-   print( fetchNewRecords()) 
+        
+    fetchRecords()
+    
     }
     
     static let sharedController = GardenDetailController()
@@ -30,7 +32,7 @@ class GardenDetailController {
         }
     }
     
-    func fetchNewRecords(completion: ((NSError?) -> Void)? = nil) {
+    func fetchRecords(completion: ((NSError?) -> Void)? = nil) {
         let predicate = NSPredicate(value: true)
         
         cloudKitManager.fetchRecordsWithType(Garden.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
@@ -44,7 +46,10 @@ class GardenDetailController {
             
             guard let records = records else { return }
             
+//            print(records.description)
+            
             self.garden = records.flatMap { Garden(record: $0) }
+            
         }
     }
 }
