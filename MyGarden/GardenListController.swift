@@ -9,6 +9,9 @@
 import UIKit
 import CloudKit
 
+// TODO: - Fix Notification Names/Strings
+// TODO: - Combine the gDetail and GList controllers
+
 public let GardenListControllerDidRefreshNotification = "GardenDetailControllerDidRefreshNotification"
 
 

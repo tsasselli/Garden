@@ -29,20 +29,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="168.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-Ww-j2q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
+                                                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-fj-2Xw">
                                                     <rect key="frame" x="8" y="94" width="74" height="74"/>
                                                     <color key="backgroundColor" red="0.2234054053" green="0.33723337549999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-9Q-UUl">
                                                     <rect key="frame" x="90" y="113" width="156" height="47"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.45711206896551726" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-Ww-j2q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
-                                                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -53,6 +54,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9jC-fN-4T3" id="CUa-PY-v6z"/>
+                                    <outlet property="delegate" destination="9jC-fN-4T3" id="Nbu-34-ave"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -254,14 +259,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-p5-dns">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-p5-dns">
                                 <rect key="frame" x="0.0" y="64" width="594" height="176"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-wR-GVC">
-                                <rect key="frame" x="0.0" y="172" width="68" height="68"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="WFH-he-Xwb"/>
-                                </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCS-4n-cTO">
                                 <rect key="frame" x="0.0" y="308" width="600" height="292"/>
@@ -342,22 +341,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-wR-GVC">
+                                <rect key="frame" x="0.0" y="172" width="68" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="WFH-he-Xwb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="JIS-wR-GVC" secondAttribute="leading" id="0Vp-29-cuf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pfd-nC-tzC" secondAttribute="trailing" constant="-14" id="1cS-Wd-iUz"/>
+                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="9e8-cy-Dde"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="Cnc-GM-V7g"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="DVG-Yi-tb5"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="DnU-vP-kpV"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="JIS-wR-GVC" secondAttribute="leading" id="J1b-GK-wEa"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="FX6-oU-hfL"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" constant="292" id="M7D-BA-1Wl"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="Pfh-Vj-hWE"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" id="RdF-xm-U47"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="YX9-82-1ql"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="ZrN-8w-Xzh"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="108" id="ZvU-e2-WdT"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="aCF-qa-dQe"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="CCS-4n-cTO" secondAttribute="bottom" id="ekL-es-pYL"/>
-                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="t0d-CQ-UCp"/>
                             <constraint firstAttribute="trailing" secondItem="CCS-4n-cTO" secondAttribute="trailing" id="tvH-Mh-0pC"/>
                         </constraints>
                     </view>
@@ -397,6 +402,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XzP-uc-Iaf"/>
+        <segue reference="lfc-ri-Nuv"/>
     </inferredMetricsTieBreakers>
 </document>

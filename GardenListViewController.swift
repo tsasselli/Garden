@@ -16,16 +16,16 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(animated: Bool) {
         
-        let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenListControllerDidRefreshNotification , object: nil)
+        
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GardenListController.sharedController.fetchGardenListRecords()
-    
+        GardenDetailController.sharedController.fetchRecords()
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(gardensWereUpdated(_:)), name: GardenListControllerDidRefreshNotification , object: nil)
     }
     
     
@@ -38,7 +38,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let item = tableView.dequeueReusableCellWithIdentifier("gardenListCell", forIndexPath: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         
-        let garden = GardenListController.sharedController.gardens[indexPath.row]
+        let garden = GardenDetailController.sharedController.garden[indexPath.row]
         
         item.backgroundImgView.image = garden.backgroundImg
         item.profileImgView.image = garden.profileImg
@@ -48,7 +48,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GardenListController.sharedController.gardens.count
+        return GardenDetailController.sharedController.garden.count
     }
        
 

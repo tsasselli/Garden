@@ -43,19 +43,19 @@ class GardenDetailViewController: UIViewController {
         
     }
     
-    func requestFullSync(completion: (() -> Void)? = nil) {
-        
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        GardenDetailController.sharedController.fetchRecords() {
-            
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            
-            if let completion = completion {
-                completion()
-            }
-        }
-    }
+//    func requestFullSync(completion: (() -> Void)? = nil) {
+//        
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        
+//        GardenDetailController.sharedController.fetchRecords() {
+//            
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//            
+//            if let completion = completion {
+//                completion()
+//            }
+//        }
+//    }
     
     
     
