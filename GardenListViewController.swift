@@ -14,36 +14,43 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewWillAppear(animated: Bool) {
+        
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenListControllerDidRefreshNotification , object: nil)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-     //
-//        let nc = NSNotificationCenter.defaultCenter()
-//        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenListControllerDidRefreshNotification , object: nil)
-//        
+        GardenListController.sharedController.fetchGardenListRecords()
+    
     }
     
-//    
-//    func gardensWereUpdated(notification: NSNotification) {
-//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//           self.tableView.reloadData()
-//        })
-//    }
+    
+    func gardensWereUpdated(notification: NSNotification) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+           self.tableView.reloadData()
+        })
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("", forIndexPath: indexPath)
-        return cell 
+        guard let item = tableView.dequeueReusableCellWithIdentifier("gardenListCell", forIndexPath: indexPath) as? ListTableViewCell else { return UITableViewCell() }
+        
+        let garden = GardenListController.sharedController.gardens[indexPath.row]
+        
+        item.backgroundImgView.image = garden.backgroundImg
+        item.profileImgView.image = garden.profileImg
+        item.gardenNameLabel.text = garden.gdName
+        
+        return item
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return GardenListController.sharedController.gardens.count
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+       
 
     /*
     // MARK: - Navigation

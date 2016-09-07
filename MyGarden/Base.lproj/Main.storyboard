@@ -49,7 +49,7 @@
                                             <outlet property="backgroundImgView" destination="E3c-Ww-j2q" id="Axk-0i-3ku"/>
                                             <outlet property="gardenNameLabel" destination="A4h-9Q-UUl" id="8ka-gW-kY5"/>
                                             <outlet property="profileImgView" destination="CIo-fj-2Xw" id="F3y-tC-pQj"/>
-                                            <segue destination="DYP-eE-e5R" kind="show" id="R2h-Zy-LqR"/>
+                                            <segue destination="DYP-eE-e5R" kind="show" id="lfc-ri-Nuv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -190,22 +190,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="td3-3b-1qL" firstAttribute="trailing" secondItem="QSZ-Ro-m9u" secondAttribute="trailing" id="8Cg-OV-RKQ"/>
                             <constraint firstAttribute="trailing" secondItem="3Cp-EW-nWA" secondAttribute="trailing" id="Axy-Kv-lMg"/>
                             <constraint firstItem="QSZ-Ro-m9u" firstAttribute="top" secondItem="bR4-cM-noP" secondAttribute="bottom" constant="1" id="CyV-oc-fwD"/>
+                            <constraint firstItem="td3-3b-1qL" firstAttribute="top" secondItem="ipc-VO-B3a" secondAttribute="bottom" id="D3f-1j-842"/>
                             <constraint firstItem="VrX-pb-aVq" firstAttribute="top" secondItem="3Cp-EW-nWA" secondAttribute="bottom" id="DKn-A3-XHx"/>
                             <constraint firstItem="QSZ-Ro-m9u" firstAttribute="top" secondItem="8ap-Xf-qsM" secondAttribute="top" constant="241" id="KJ9-xg-iol"/>
                             <constraint firstItem="QSZ-Ro-m9u" firstAttribute="leading" secondItem="bR4-cM-noP" secondAttribute="leading" id="OaC-Q9-CRW"/>
-                            <constraint firstItem="td3-3b-1qL" firstAttribute="top" secondItem="ipc-VO-B3a" secondAttribute="bottom" id="R7f-i3-Ir7"/>
+                            <constraint firstItem="td3-3b-1qL" firstAttribute="bottom" secondItem="bR4-cM-noP" secondAttribute="bottom" id="Qjv-0W-mWJ"/>
                             <constraint firstItem="3Cp-EW-nWA" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leading" id="RG4-LJ-sJU"/>
                             <constraint firstItem="bR4-cM-noP" firstAttribute="top" secondItem="ipc-VO-B3a" secondAttribute="bottom" constant="108" id="XtJ-Ei-Vhy"/>
-                            <constraint firstItem="bR4-cM-noP" firstAttribute="bottom" secondItem="td3-3b-1qL" secondAttribute="bottom" id="Xxx-pa-lL9"/>
                             <constraint firstItem="QSZ-Ro-m9u" firstAttribute="trailing" secondItem="3Cp-EW-nWA" secondAttribute="trailing" id="aaw-9H-FU6"/>
                             <constraint firstItem="3Cp-EW-nWA" firstAttribute="top" secondItem="QSZ-Ro-m9u" secondAttribute="bottom" constant="1" id="cY6-7C-fWQ"/>
-                            <constraint firstItem="QSZ-Ro-m9u" firstAttribute="trailing" secondItem="td3-3b-1qL" secondAttribute="trailing" id="iOI-iA-34v"/>
                             <constraint firstItem="thn-v7-n4X" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leading" id="kLJ-WR-eX2"/>
-                            <constraint firstItem="bR4-cM-noP" firstAttribute="leading" secondItem="td3-3b-1qL" secondAttribute="leading" constant="-66" id="l7P-G6-emy"/>
                             <constraint firstAttribute="trailing" secondItem="thn-v7-n4X" secondAttribute="trailing" id="oof-4K-jAv"/>
                             <constraint firstItem="bR4-cM-noP" firstAttribute="leading" secondItem="3Cp-EW-nWA" secondAttribute="leading" id="pda-Wz-3b7"/>
+                            <constraint firstItem="td3-3b-1qL" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leadingMargin" constant="46" id="zNc-o1-kYK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Garden" id="0iM-dc-KOH">
@@ -242,7 +242,7 @@
             </objects>
             <point key="canvasLocation" x="1644" y="1130"/>
         </scene>
-        <!--Title-->
+        <!--Garden Detail View-->
         <scene sceneID="1r8-AT-Cst">
             <objects>
                 <viewController id="DYP-eE-e5R" customClass="GardenDetailViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
@@ -275,7 +275,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-tv-nFe">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-tv-nFe">
                                                 <rect key="frame" x="0.0" y="28" width="120" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,20 +348,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="pfd-nC-tzC" secondAttribute="trailing" constant="-14" id="1cS-Wd-iUz"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="Cnc-GM-V7g"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="DVG-Yi-tb5"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="0w8-p5-dns" secondAttribute="leading" id="FGD-fb-V3s"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="DnU-vP-kpV"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="JIS-wR-GVC" secondAttribute="leading" id="J1b-GK-wEa"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" constant="292" id="M7D-BA-1Wl"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="Pfh-Vj-hWE"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" id="RdF-xm-U47"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="YPM-nz-Wez"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="ZrN-8w-Xzh"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="108" id="ZvU-e2-WdT"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="bottom" secondItem="0w8-p5-dns" secondAttribute="bottom" id="ZxQ-Nd-TfH"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="aCF-qa-dQe"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="CCS-4n-cTO" secondAttribute="bottom" id="ekL-es-pYL"/>
+                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="t0d-CQ-UCp"/>
                             <constraint firstAttribute="trailing" secondItem="CCS-4n-cTO" secondAttribute="trailing" id="tvH-Mh-0pC"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="yxS-0x-Y3u"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Teq-GT-GX0"/>
+                    <navigationItem key="navigationItem" title="Garden Detail View" id="Teq-GT-GX0"/>
                     <connections>
                         <outlet property="backgroundImageLabel" destination="0w8-p5-dns" id="ujZ-7P-Wit"/>
                         <outlet property="contactNameLabel" destination="MKr-d1-2Qr" id="7Ab-lv-LdX"/>
@@ -397,6 +397,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="R2h-Zy-LqR"/>
+        <segue reference="XzP-uc-Iaf"/>
     </inferredMetricsTieBreakers>
 </document>

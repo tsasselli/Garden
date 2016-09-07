@@ -9,7 +9,7 @@
 import UIKit
 
 class GardenDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var backgroundImageLabel: UIImageView!
     @IBOutlet weak var profImageLabel: UIImageView!
@@ -19,44 +19,56 @@ class GardenDetailViewController: UIViewController {
     @IBOutlet weak var productsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    var garden: [Garden] = []
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
-//        print(GardenDetailController.sharedController.fetchRecords())
+        //        print(GardenDetailController.sharedController.fetchRecords())
         _ = GardenDetailController()
         
         let gardenArray = GardenDetailController.sharedController.garden
         
         for garden in gardenArray {
-            nameLabel.text = garden.gdName
-            backgroundImageLabel.image = garden.backgroundImg
-            profImageLabel.image = garden.profileImg
-            phoneLabel.text = garden.gdPhone
-            contactNameLabel.text = garden.gdContact
-            descriptionLabel.text = garden.gdBio
+            nameLabel.text = ("Garden Name: \(garden.gdName!)")
+            phoneLabel.text = ("Phone Number: \(garden.gdPhone!)")
+            contactNameLabel.text = ("Contact Name: \(garden.gdContact!)")
+            descriptionLabel.text = ("Description: \(garden.gdBio!)")
             productsLabel.text = garden.gdProducts
             locationLabel.text = garden.gdLocation
+            backgroundImageLabel.image = garden.backgroundImg
+            profImageLabel.image = garden.profileImg
             
         }
         
     }
     
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func requestFullSync(completion: (() -> Void)? = nil) {
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        GardenDetailController.sharedController.fetchRecords() {
+            
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            
+            if let completion = completion {
+                completion()
+            }
+        }
     }
-    */
-
+    
+    
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -28,6 +28,7 @@ class Garden {
     var gdLocation: String?
     var gdContact: String?
     var gdPhone: String?
+    var gardenRecordID: CKRecordID?
     
     var profileImgData: NSData?
     
@@ -60,7 +61,7 @@ class Garden {
         self.backgroundImgData = backgroundImgData
     }
     
-    private var temporaryBGPhotoURL: NSURL {
+    private var temporaryBackgroundPhotoURL: NSURL {
         
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = NSURL(fileURLWithPath: temporaryDirectory)
@@ -113,8 +114,8 @@ class Garden {
         record[Garden.gdLocationKey] = gdLocation
         record[Garden.gdContactKey] = gdContact
         record[Garden.gdPhoneKey] = gdPhone
-        record[Garden.profileImgKey] = CKAsset(fileURL: temporaryBGPhotoURL)
-        record[Garden.backgroundImgKey] = CKAsset(fileURL: temporaryProfilePhotoURL)
+        record[Garden.profileImgKey] = CKAsset(fileURL: temporaryProfilePhotoURL)
+        record[Garden.backgroundImgKey] = CKAsset(fileURL: temporaryBackgroundPhotoURL)
        /* record[Garden.collectViewImgKey] = collectViewImgData */
         
         return record

@@ -18,14 +18,14 @@ class ListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        let gardensArray = GardenDetailController.sharedController.garden
-        
-        for garden in gardensArray {
-            backgroundImgView.image = garden.backgroundImg
-            profileImgView.image = garden.profileImg
-            gardenNameLabel.text = garden.gdName
-            
-        }
+//        let gardensArray = GardenDetailController.sharedController.garden
+//        
+//        for garden in gardensArray {
+//            backgroundImgView.image = garden.backgroundImg
+//            profileImgView.image = garden.profileImg
+//            gardenNameLabel.text = garden.gdName
+//            
+//        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
