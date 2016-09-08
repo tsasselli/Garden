@@ -25,6 +25,10 @@ class GardenDetailViewController: UIViewController {
         
         _ = GardenDetailController()
         
+        profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2
+        profImageLabel.clipsToBounds = true
+
+        
         updateWithGarden()
         
     }
@@ -32,8 +36,6 @@ class GardenDetailViewController: UIViewController {
     func updateWithGarden () {
         if let garden = garden {
             
-            profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2
-            profImageLabel.clipsToBounds = true
             
             nameLabel.text = ("Garden Name: \(garden.gdName!)")
             phoneLabel.text = ("Phone Number: \(garden.gdPhone!)")

@@ -27,6 +27,11 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     var isFromFirst: Bool = false
     var garden: Garden?
 
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -145,6 +150,10 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         dismissViewControllerAnimated(true, completion: nil)
 
     }
+    
+    
+
+    
     
 // MARK: Text Field/Keyboard Functions
     

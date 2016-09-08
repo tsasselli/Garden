@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-Ww-j2q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-fj-2Xw">
@@ -44,7 +44,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="102" height="24"/>
                                                             <color key="backgroundColor" white="1" alpha="0.45711206896551726" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -110,31 +110,42 @@
                                     <outletCollection property="gestureRecognizers" destination="0jM-pr-MBf" appends="YES" id="7id-Ru-e1x"/>
                                 </connections>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-Ro-m9u">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QSZ-Ro-m9u" customClass="GardenImageUICollectionView" customModule="MyGarden" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="241" width="600" height="59"/>
-                                <color key="backgroundColor" red="1" green="0.89092811989999998" blue="0.17650125420000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="b1a-6z-TXr"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JQg-LI-8KS">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="56" height="58"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="khY-S3-Vzt">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="38w-la-Tun">
+                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="58"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="38w-la-Tun" secondAttribute="bottom" id="65g-9m-hIT"/>
+                                            <constraint firstItem="38w-la-Tun" firstAttribute="leading" secondItem="khY-S3-Vzt" secondAttribute="leading" id="L6h-g5-l8j"/>
+                                            <constraint firstItem="38w-la-Tun" firstAttribute="top" secondItem="khY-S3-Vzt" secondAttribute="top" id="Uel-Gv-ck1"/>
+                                            <constraint firstAttribute="trailing" secondItem="38w-la-Tun" secondAttribute="trailing" id="gCS-Oj-dKI"/>
+                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-cM-noP">
+                            <imageView tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bR4-cM-noP">
                                 <rect key="frame" x="0.0" y="172" width="68" height="68"/>
                                 <color key="backgroundColor" red="0.14606979980000001" green="1" blue="0.2114186901" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -283,7 +294,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-p5-dns">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-p5-dns">
                                 <rect key="frame" x="0.0" y="64" width="594" height="176"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCS-4n-cTO">
@@ -366,28 +377,28 @@
                                 </cells>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-wR-GVC">
-                                <rect key="frame" x="0.0" y="185" width="55" height="55"/>
+                                <rect key="frame" x="0.0" y="166" width="74" height="74"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="TBw-3s-GcI"/>
+                                    <constraint firstAttribute="width" constant="74" id="uPb-S8-e1Q"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="pfd-nC-tzC" secondAttribute="trailing" constant="-14" id="1cS-Wd-iUz"/>
+                            <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="7Ho-UU-bun"/>
                             <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="7Rm-5c-LnK"/>
                             <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="8gV-g2-tJO"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="DVG-Yi-tb5"/>
+                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="H3u-Ud-ziZ"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" constant="292" id="M7D-BA-1Wl"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" id="RdF-xm-U47"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="121" id="S79-iS-K1V"/>
+                            <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="102" id="U67-Ay-ErX"/>
                             <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="YJX-Bh-vPy"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="ZrN-8w-Xzh"/>
-                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="e3u-gg-Tpk"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="CCS-4n-cTO" secondAttribute="bottom" id="ekL-es-pYL"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="puL-Xi-ouM"/>
                             <constraint firstAttribute="trailing" secondItem="CCS-4n-cTO" secondAttribute="trailing" id="tvH-Mh-0pC"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="ypk-qS-zo5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Garden Detail View" id="Teq-GT-GX0"/>

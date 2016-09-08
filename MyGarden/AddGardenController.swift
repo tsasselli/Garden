@@ -32,7 +32,7 @@ class AddGarderController {
             backgroundImgData: NSData = UIImageJPEGRepresentation(backgroundImg, 0.6) else { return }
 //                  collectionViewImgData: NSData = UIImageJPEGRepresentation(collectionViewImg, 0.8) else { return }
 //        
-        let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdLocation, profileImgData: profImageData, backgroundImgData: backgroundImgData /*collectionViewImgData: [collectionViewImgData])*/ ) 
+        let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profImageData, backgroundImgData: backgroundImgData /*collectionViewImgData: [collectionViewImgData])*/ )
         
         guard let record = garden.cloudKitRecord else { return }
         

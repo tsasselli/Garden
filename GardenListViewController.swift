@@ -12,17 +12,31 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
-    let refreshControll: UIRefreshControl = UIRefreshControl()
+
     
-    
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+     let refreshControl = UIRefreshControl()
+        
+       self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView?.addSubview(refreshControl)
         
         GardenDetailController.sharedController.fetchRecords()
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated(_:)), name: GardenDetailControllerDidRefreshNotification , object: nil)
     }
+    
+    func refresh () {
+        GardenDetailController.sharedController.fetchRecords { (_) in
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
+    }
+   
     
     
     func gardensWereUpdated(notification: NSNotification) {
@@ -38,7 +52,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         
         item.backgroundImgView.image = garden.backgroundImg
-        
         item.profileImgView.image = garden.profileImg
         item.gardenNameLabel.text = garden.gdName
         

@@ -12,6 +12,7 @@ import CloudKit
 class Garden {
     
     static let typeKey = "Garden"
+    //static let gardenRecordKey = "gardenRecord"
     static let gdNameKey = "gardenName"
     static let gdBioKey = "gardenBio"
     static let gdProductsKey = "gardenPlants"
@@ -28,7 +29,7 @@ class Garden {
     var gdLocation: String?
     var gdContact: String?
     var gdPhone: String?
-    var gardenRecordID: CKRecordID?
+  //  var gdRecordID: CKRecordID?
     
     var profileImgData: NSData?
     
@@ -49,7 +50,7 @@ class Garden {
 //        return [UIImage(data: collectViewImgData)!]
 //    }
     
-    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData? /*collectionViewImgData: [NSData]*/) {
+    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData? /*gdRecordID: CKRecordID? collectionViewImgData: [NSData]*/) {
         
         self.gdName = gdName
         self.gdBio = gdBio
@@ -59,6 +60,7 @@ class Garden {
         self.gdPhone = gdPhone
         self.profileImgData = profileImgData
         self.backgroundImgData = backgroundImgData
+    //    self.gdRecordID = gdRecordID
     }
     
     private var temporaryBackgroundPhotoURL: NSURL {
@@ -93,6 +95,7 @@ class Garden {
             gdPhone = record[Garden.gdPhoneKey] as? String,
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,
             backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset
+         //   gdRecordID = record[Garden.gardenRecordKey] as? CKRecordID
            /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
             print("failable Init failed")
             return nil}
@@ -100,7 +103,7 @@ class Garden {
         let profilePhotoData = NSData(contentsOfURL: profileImgAsset.fileURL)
         let backroundPhotoData = NSData(contentsOfURL: backgroundImgAsset.fileURL)
        
-        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData /*collectionViewImgData: collectViewImgData)*/)
+        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData /* gdRecordID:  gdRecordID, collectionViewImgData: collectViewImgData)*/)
     }
     
     var cloudKitRecordID: CKRecordID?
