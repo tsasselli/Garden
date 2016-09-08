@@ -12,9 +12,16 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
 
     
     let refreshControl: UIRefreshControl = UIRefreshControl()
+   
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        GardenDetailController.sharedController.fetchRecords()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +34,14 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         GardenDetailController.sharedController.fetchRecords()
         let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: #selector(gardensWereUpdated(_:)), name: GardenDetailControllerDidRefreshNotification , object: nil)
+        nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenDetailControllerDidRefreshNotification , object: nil)
+    }
+    
+    @IBAction func toggleMap(sender: AnyObject) {
+        mapHeightConstraint.active = !mapHeightConstraint.active
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: { 
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     func refresh () {
@@ -37,8 +51,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
    
-    
-    
     func gardensWereUpdated(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
            self.tableView.reloadData()

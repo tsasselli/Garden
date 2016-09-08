@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Garden List View Controller-->
@@ -64,17 +65,31 @@
                                     <outlet property="delegate" destination="9jC-fN-4T3" id="Nbu-34-ave"/>
                                 </connections>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZwI-Tu-uHW">
+                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="xZf-ro-nSB"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nk4-dr-gSD" firstAttribute="leading" secondItem="w1q-8j-Hlx" secondAttribute="leading" id="2Gh-ct-tH3"/>
+                            <constraint firstItem="ZwI-Tu-uHW" firstAttribute="height" secondItem="w1q-8j-Hlx" secondAttribute="height" multiplier="0.4" priority="999" id="5Zz-sE-ngQ"/>
+                            <constraint firstItem="ZwI-Tu-uHW" firstAttribute="leading" secondItem="w1q-8j-Hlx" secondAttribute="leading" id="7Fu-oi-qIo"/>
                             <constraint firstItem="hkH-e6-j8Z" firstAttribute="top" secondItem="nk4-dr-gSD" secondAttribute="bottom" id="Gkh-Iy-JSv"/>
                             <constraint firstAttribute="trailing" secondItem="nk4-dr-gSD" secondAttribute="trailing" id="akR-mz-eyB"/>
-                            <constraint firstItem="nk4-dr-gSD" firstAttribute="top" secondItem="rAI-7r-ruq" secondAttribute="bottom" id="emz-5G-up4"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwI-Tu-uHW" secondAttribute="trailing" id="fdz-Xt-xqt"/>
+                            <constraint firstItem="ZwI-Tu-uHW" firstAttribute="top" secondItem="rAI-7r-ruq" secondAttribute="bottom" id="mpY-ol-Q02"/>
+                            <constraint firstItem="nk4-dr-gSD" firstAttribute="top" secondItem="ZwI-Tu-uHW" secondAttribute="bottom" id="wpF-tP-0da"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CTy-u7-kQY">
-                        <barButtonItem key="leftBarButtonItem" title="Map" id="nN9-Ta-w0f"/>
+                        <barButtonItem key="leftBarButtonItem" title="Map" id="nN9-Ta-w0f">
+                            <connections>
+                                <action selector="toggleMap:" destination="9jC-fN-4T3" id="xp2-k9-GYy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yJI-zu-ahS">
                             <connections>
                                 <segue destination="GMD-RQ-xYP" kind="show" id="Rcq-Op-aQd"/>
@@ -82,6 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapHeightConstraint" destination="xZf-ro-nSB" id="4uD-x6-MCH"/>
                         <outlet property="tableView" destination="nk4-dr-gSD" id="aCJ-jx-Zfk"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,7 @@
 		6412709F1D7F84B200F02DBA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */; };
 		641270A11D7FB79A00F02DBA /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641270A01D7FB79A00F02DBA /* CloudKitSyncable.swift */; };
 		6463065B1D81D8650073EC2A /* GardenImageUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463065A1D81D8650073EC2A /* GardenImageUICollectionView.swift */; };
-		6463065D1D81DD530073EC2A /* MapDropDownAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463065C1D81DD530073EC2A /* MapDropDownAnimation.swift */; };
+		6463065F1D82138C0073EC2A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6463065E1D82138C0073EC2A /* MapKit.framework */; };
 		64B140951D7A18D200BCF16C /* GardenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B140941D7A18D200BCF16C /* GardenListViewController.swift */; };
 		64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9841B1D762A4900872B7C /* AppDelegate.swift */; };
 		64B984211D762A4900872B7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B9841F1D762A4900872B7C /* Main.storyboard */; };
@@ -32,7 +32,7 @@
 		6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		641270A01D7FB79A00F02DBA /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		6463065A1D81D8650073EC2A /* GardenImageUICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenImageUICollectionView.swift; sourceTree = "<group>"; };
-		6463065C1D81DD530073EC2A /* MapDropDownAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDropDownAnimation.swift; sourceTree = "<group>"; };
+		6463065E1D82138C0073EC2A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		64B140941D7A18D200BCF16C /* GardenListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GardenListViewController.swift; path = ../GardenListViewController.swift; sourceTree = "<group>"; };
 		64B984181D762A4900872B7C /* MyGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B9841B1D762A4900872B7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6463065F1D82138C0073EC2A /* MapKit.framework in Frameworks */,
 				64B984381D7637EF00872B7C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +67,7 @@
 		64B9840F1D762A4900872B7C = {
 			isa = PBXGroup;
 			children = (
+				6463065E1D82138C0073EC2A /* MapKit.framework */,
 				64B984371D7637EF00872B7C /* CloudKit.framework */,
 				64B9841A1D762A4900872B7C /* MyGarden */,
 				64B984191D762A4900872B7C /* Products */,
@@ -117,7 +119,6 @@
 		64B9842F1D762AF100872B7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6463065C1D81DD530073EC2A /* MapDropDownAnimation.swift */,
 				64B140941D7A18D200BCF16C /* GardenListViewController.swift */,
 				6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */,
 				64B984451D7667A500872B7C /* GardenDetailViewController.swift */,
@@ -180,6 +181,9 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = EHX32HK787;
 						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -231,7 +235,6 @@
 				641270A11D7FB79A00F02DBA /* CloudKitSyncable.swift in Sources */,
 				64B9843C1D76571500872B7C /* AddGardenController.swift in Sources */,
 				6412709F1D7F84B200F02DBA /* ListTableViewCell.swift in Sources */,
-				6463065D1D81DD530073EC2A /* MapDropDownAnimation.swift in Sources */,
 				64B140951D7A18D200BCF16C /* GardenListViewController.swift in Sources */,
 				64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */,
 				64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */,
