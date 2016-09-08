@@ -15,9 +15,15 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var gardenNameLabel: UILabel!
 
     
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
        
+        profileImgView.layer.cornerRadius = profileImgView.frame.size.width/2
+        profileImgView.clipsToBounds = true
+        
 //        let gardensArray = GardenDetailController.sharedController.garden
 //        
 //        for garden in gardensArray {

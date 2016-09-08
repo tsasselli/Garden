@@ -9,7 +9,7 @@
         <!--Garden List View Controller-->
         <scene sceneID="PjS-92-YXU">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9jC-fN-4T3" customClass="GardenListViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GardenListViewController" automaticallyAdjustsScrollViewInsets="NO" id="9jC-fN-4T3" customClass="GardenListViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rAI-7r-ruq"/>
                         <viewControllerLayoutGuide type="bottom" id="hkH-e6-j8Z"/>
@@ -37,20 +37,25 @@
                                                     <rect key="frame" x="8" y="94" width="74" height="74"/>
                                                     <color key="backgroundColor" red="0.2234054053" green="0.33723337549999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-9Q-UUl">
-                                                    <rect key="frame" x="90" y="113" width="156" height="47"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.45711206896551726" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="77f-Vz-LMk">
+                                                    <rect key="frame" x="90" y="113" width="196" height="87"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="NameLabel" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-9Q-UUl">
+                                                            <rect key="frame" x="0.0" y="0.0" width="102" height="24"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.45711206896551726" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backgroundImgView" destination="E3c-Ww-j2q" id="Axk-0i-3ku"/>
                                             <outlet property="gardenNameLabel" destination="A4h-9Q-UUl" id="8ka-gW-kY5"/>
                                             <outlet property="profileImgView" destination="CIo-fj-2Xw" id="F3y-tC-pQj"/>
-                                            <segue destination="DYP-eE-e5R" kind="show" id="lfc-ri-Nuv"/>
+                                            <segue destination="DYP-eE-e5R" kind="show" identifier="toGardenDetail" id="lfc-ri-Nuv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -69,7 +74,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CTy-u7-kQY">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="nN9-Ta-w0f"/>
+                        <barButtonItem key="leftBarButtonItem" title="Map" id="nN9-Ta-w0f"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yJI-zu-ahS">
                             <connections>
                                 <segue destination="GMD-RQ-xYP" kind="show" id="Rcq-Op-aQd"/>
@@ -96,61 +101,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-EW-nWA">
-                                <rect key="frame" x="0.0" y="301" width="600" height="299"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="thn-v7-n4X">
-                                        <rect key="frame" x="0.0" y="16" width="600" height="205"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Garden Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-mt-g4h">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gs-ae-j2t">
-                                                <rect key="frame" x="0.0" y="35" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Products:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-Ul-W4c">
-                                                <rect key="frame" x="0.0" y="70" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aj-k6-Lnu">
-                                                <rect key="frame" x="0.0" y="105" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UeN-w4-A69">
-                                                <rect key="frame" x="0.0" y="140" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPl-Qe-aA7">
-                                                <rect key="frame" x="0.0" y="175" width="600" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE1-0Q-nkY">
-                                        <rect key="frame" x="237" y="253" width="91" height="30"/>
-                                        <state key="normal" title="to detail view"/>
-                                        <connections>
-                                            <segue destination="DYP-eE-e5R" kind="show" id="XzP-uc-Iaf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="thn-v7-n4X" firstAttribute="top" secondItem="3Cp-EW-nWA" secondAttribute="top" constant="16" id="5Eo-Dl-lxP"/>
-                                    <constraint firstItem="thn-v7-n4X" firstAttribute="leading" secondItem="3Cp-EW-nWA" secondAttribute="leading" id="ORS-Bv-AVG"/>
-                                    <constraint firstAttribute="bottom" secondItem="thn-v7-n4X" secondAttribute="bottom" id="gVd-vG-RIs"/>
-                                    <constraint firstAttribute="trailing" secondItem="thn-v7-n4X" secondAttribute="trailing" id="rcN-CQ-tC9"/>
-                                </constraints>
-                            </scrollView>
                             <imageView tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="td3-3b-1qL">
-                                <rect key="frame" x="66" y="64" width="534" height="176"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="176"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" link="YES" image="YES"/>
                                 </accessibility>
@@ -192,6 +144,77 @@
                                     <outletCollection property="gestureRecognizers" destination="0T3-YL-h1O" appends="YES" id="wkn-fl-A02"/>
                                 </connections>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cp-EW-nWA">
+                                <rect key="frame" x="0.0" y="301" width="600" height="299"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="thn-v7-n4X">
+                                        <rect key="frame" x="0.0" y="16" width="600" height="205"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Garden Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JeS-mt-g4h">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="I2O-Dv-jlW"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Gs-ae-j2t">
+                                                <rect key="frame" x="0.0" y="35" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="aVm-9J-6Rs"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Products:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-Ul-W4c">
+                                                <rect key="frame" x="0.0" y="70" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="26W-G4-LYm"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aj-k6-Lnu">
+                                                <rect key="frame" x="0.0" y="105" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="Cxn-gE-WI5"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact Name:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UeN-w4-A69">
+                                                <rect key="frame" x="0.0" y="140" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="iIZ-o2-8Kl"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPl-Qe-aA7">
+                                                <rect key="frame" x="0.0" y="175" width="600" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="GMD-RQ-xYP" id="Chf-ME-1EH"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE1-0Q-nkY">
+                                        <rect key="frame" x="237" y="253" width="91" height="30"/>
+                                        <state key="normal" title="to detail view"/>
+                                        <connections>
+                                            <segue destination="DYP-eE-e5R" kind="show" id="XzP-uc-Iaf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="thn-v7-n4X" firstAttribute="top" secondItem="3Cp-EW-nWA" secondAttribute="top" constant="16" id="5Eo-Dl-lxP"/>
+                                    <constraint firstItem="thn-v7-n4X" firstAttribute="leading" secondItem="3Cp-EW-nWA" secondAttribute="leading" id="ORS-Bv-AVG"/>
+                                    <constraint firstAttribute="bottom" secondItem="thn-v7-n4X" secondAttribute="bottom" id="gVd-vG-RIs"/>
+                                    <constraint firstAttribute="trailing" secondItem="thn-v7-n4X" secondAttribute="trailing" id="rcN-CQ-tC9"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -210,7 +233,7 @@
                             <constraint firstItem="thn-v7-n4X" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leading" id="kLJ-WR-eX2"/>
                             <constraint firstAttribute="trailing" secondItem="thn-v7-n4X" secondAttribute="trailing" id="oof-4K-jAv"/>
                             <constraint firstItem="bR4-cM-noP" firstAttribute="leading" secondItem="3Cp-EW-nWA" secondAttribute="leading" id="pda-Wz-3b7"/>
-                            <constraint firstItem="td3-3b-1qL" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leadingMargin" constant="46" id="zNc-o1-kYK"/>
+                            <constraint firstItem="td3-3b-1qL" firstAttribute="leading" secondItem="8ap-Xf-qsM" secondAttribute="leadingMargin" constant="-20" id="zNc-o1-kYK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Garden" id="0iM-dc-KOH">
@@ -231,6 +254,7 @@
                         <outlet property="productTextField" destination="hQn-Ul-W4c" id="iEc-sK-Ywk"/>
                         <outlet property="profileImg" destination="bR4-cM-noP" id="ZmW-st-cEI"/>
                         <outlet property="profileTapGesture" destination="0T3-YL-h1O" id="QEV-hc-jvg"/>
+                        <outlet property="scrollView" destination="3Cp-EW-nWA" id="7NX-nh-czZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2a-ip-PUi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -319,7 +343,7 @@
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pfd-nC-tzC">
                                 <rect key="frame" x="0.0" y="248" width="594" height="60"/>
-                                <color key="backgroundColor" red="0.082712369987091416" green="0.28078965519706467" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="GW8-R6-p1W"/>
                                 </constraints>
@@ -341,29 +365,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-wR-GVC">
-                                <rect key="frame" x="0.0" y="172" width="68" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-wR-GVC">
+                                <rect key="frame" x="0.0" y="185" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="WFH-he-Xwb"/>
+                                    <constraint firstAttribute="width" constant="55" id="TBw-3s-GcI"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="JIS-wR-GVC" secondAttribute="leading" id="0Vp-29-cuf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pfd-nC-tzC" secondAttribute="trailing" constant="-14" id="1cS-Wd-iUz"/>
-                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="9e8-cy-Dde"/>
-                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="Cnc-GM-V7g"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="7Rm-5c-LnK"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="8gV-g2-tJO"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="DVG-Yi-tb5"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="FX6-oU-hfL"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" constant="292" id="M7D-BA-1Wl"/>
                             <constraint firstItem="CCS-4n-cTO" firstAttribute="top" secondItem="pfd-nC-tzC" secondAttribute="bottom" id="RdF-xm-U47"/>
-                            <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="YX9-82-1ql"/>
+                            <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="121" id="S79-iS-K1V"/>
+                            <constraint firstItem="0w8-p5-dns" firstAttribute="trailing" secondItem="pfd-nC-tzC" secondAttribute="trailing" id="YJX-Bh-vPy"/>
                             <constraint firstItem="pfd-nC-tzC" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="ZrN-8w-Xzh"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="108" id="ZvU-e2-WdT"/>
-                            <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="aCF-qa-dQe"/>
+                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" constant="8" symbolic="YES" id="e3u-gg-Tpk"/>
                             <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="CCS-4n-cTO" secondAttribute="bottom" id="ekL-es-pYL"/>
+                            <constraint firstItem="pfd-nC-tzC" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" constant="8" symbolic="YES" id="puL-Xi-ouM"/>
                             <constraint firstAttribute="trailing" secondItem="CCS-4n-cTO" secondAttribute="trailing" id="tvH-Mh-0pC"/>
+                            <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="pfd-nC-tzC" secondAttribute="leading" id="ypk-qS-zo5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Garden Detail View" id="Teq-GT-GX0"/>

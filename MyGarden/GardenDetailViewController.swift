@@ -19,43 +19,48 @@ class GardenDetailViewController: UIViewController {
     @IBOutlet weak var productsLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
-    var garden: [Garden] = []
+    var garden: Garden?
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidLoad() {
         
-        //        print(GardenDetailController.sharedController.fetchRecords())
         _ = GardenDetailController()
         
-        let gardenArray = GardenDetailController.sharedController.garden
+        updateWithGarden()
         
-        for garden in gardenArray {
+    }
+    
+    func updateWithGarden () {
+        if let garden = garden {
+            
+            profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2
+            profImageLabel.clipsToBounds = true
+            
             nameLabel.text = ("Garden Name: \(garden.gdName!)")
             phoneLabel.text = ("Phone Number: \(garden.gdPhone!)")
             contactNameLabel.text = ("Contact Name: \(garden.gdContact!)")
             descriptionLabel.text = ("Description: \(garden.gdBio!)")
-            productsLabel.text = garden.gdProducts
-            locationLabel.text = garden.gdLocation
+            productsLabel.text = ("Products: \(garden.gdProducts!)")
+            locationLabel.text = ("Location: \(garden.gdLocation!)")
             backgroundImageLabel.image = garden.backgroundImg
             profImageLabel.image = garden.profileImg
             
         }
-        
     }
     
-//    func requestFullSync(completion: (() -> Void)? = nil) {
-//        
-//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//        
-//        GardenDetailController.sharedController.fetchRecords() {
-//            
-//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//            
-//            if let completion = completion {
-//                completion()
-//            }
-//        }
-//    }
+    
+    //    func requestFullSync(completion: (() -> Void)? = nil) {
+    //
+    //        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    //
+    //        GardenDetailController.sharedController.fetchRecords() {
+    //
+    //            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    //
+    //            if let completion = completion {
+    //                completion()
+    //            }
+    //        }
+    //    }
     
     
     

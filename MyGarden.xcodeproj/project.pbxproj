@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6401074C1D78A098000B3630 /* GardenListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074B1D78A098000B3630 /* GardenListController.swift */; };
 		6401074E1D78A187000B3630 /* AddGardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401074D1D78A187000B3630 /* AddGardenViewController.swift */; };
 		6412709F1D7F84B200F02DBA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */; };
 		641270A11D7FB79A00F02DBA /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641270A01D7FB79A00F02DBA /* CloudKitSyncable.swift */; };
@@ -27,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6401074B1D78A098000B3630 /* GardenListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenListController.swift; sourceTree = "<group>"; };
 		6401074D1D78A187000B3630 /* AddGardenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGardenViewController.swift; sourceTree = "<group>"; };
 		6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		641270A01D7FB79A00F02DBA /* CloudKitSyncable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				64B9843F1D7663E400872B7C /* UserController.swift */,
 				64B9843B1D76571500872B7C /* AddGardenController.swift */,
 				64B984411D7664A300872B7C /* GardenDetailController.swift */,
-				6401074B1D78A098000B3630 /* GardenListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -231,7 +228,6 @@
 				64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */,
 				64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */,
 				64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */,
-				6401074C1D78A098000B3630 /* GardenListController.swift in Sources */,
 				64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
