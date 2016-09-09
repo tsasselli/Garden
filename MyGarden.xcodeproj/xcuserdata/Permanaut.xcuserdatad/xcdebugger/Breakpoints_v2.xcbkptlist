@@ -19,5 +19,165 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/Garden.swift"
+            timestampString = "495143318.742867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "init(record:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/AddGardenController.swift"
+            timestampString = "495143827.939111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "createNewGarden(_:gdBio:gdProducts:gdLocation:gdContact:gdPhone:profileImgData:backgroundImg:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.AddGarderController.createNewGarden (Swift.Optional&lt;Swift.String&gt;, gdBio : Swift.Optional&lt;Swift.String&gt;, gdProducts : Swift.Optional&lt;Swift.String&gt;, gdLocation : Swift.Optional&lt;__ObjC.CLLocation&gt;, gdContact : Swift.Optional&lt;Swift.String&gt;, gdPhone : Swift.Optional&lt;Swift.String&gt;, profileImgData : __ObjC.UIImage, backgroundImg : __ObjC.UIImage, completion : Swift.Optional&lt;(Swift.Optional&lt;MyGarden.Garden&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/MyGarden/AddGardenController.swift"
+                  timestampString = "495144409.876327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "472">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.AddGarderController.createNewGarden (Swift.Optional&lt;Swift.String&gt;, gdBio : Swift.Optional&lt;Swift.String&gt;, gdProducts : Swift.Optional&lt;Swift.String&gt;, gdLocation : Swift.Optional&lt;__ObjC.CLLocation&gt;, gdContact : Swift.Optional&lt;Swift.String&gt;, gdPhone : Swift.Optional&lt;Swift.String&gt;, profileImgData : __ObjC.UIImage, backgroundImg : __ObjC.UIImage, completion : Swift.Optional&lt;(Swift.Optional&lt;MyGarden.Garden&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/MyGarden/AddGardenController.swift"
+                  timestampString = "495144409.876417"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "610">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/AddGardenViewController.swift"
+            timestampString = "495143899.69266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "createGarden(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/AddGardenViewController.swift"
+            timestampString = "495144409.794184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "createGarden(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.AddGardenViewController.createGarden (Swift.AnyObject) -&gt; ()"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/MyGarden/AddGardenViewController.swift"
+                  timestampString = "495144409.877391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "3417">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.AddGardenViewController.(createGarden (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/MyGarden/AddGardenViewController.swift"
+                  timestampString = "495144409.877475"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/AddGardenViewController.swift"
+            timestampString = "495144409.794184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "forwardGeoCodeAddress(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyGarden/AddGardenViewController.swift"
+            timestampString = "495144409.794184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "forwardGeoCodeAddress(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

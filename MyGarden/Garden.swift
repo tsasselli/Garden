@@ -26,7 +26,7 @@ class Garden {
     var gdName: String?
     var gdBio: String?
     var gdProducts: String?
-    var gdLocation: String?
+    var gdLocation: CLLocation?
     var gdContact: String?
     var gdPhone: String?
   //  var gdRecordID: CKRecordID?
@@ -50,7 +50,7 @@ class Garden {
 //        return [UIImage(data: collectViewImgData)!]
 //    }
     
-    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData? /*gdRecordID: CKRecordID? collectionViewImgData: [NSData]*/) {
+    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData? /*gdRecordID: CKRecordID? collectionViewImgData: [NSData]*/) {
         
         self.gdName = gdName
         self.gdBio = gdBio
@@ -90,7 +90,7 @@ class Garden {
         guard let gdName = record[Garden.gdNameKey] as? String,
             gdBio = record[Garden.gdBioKey] as? String,
             gdProducts = record[Garden.gdProductsKey] as? String,
-            gdLocation = record[Garden.gdLocationKey] as? String,
+            gdLocation = record[Garden.gdLocationKey] as? CLLocation?,
             gdContact = record[Garden.gdContactKey] as? String,
             gdPhone = record[Garden.gdPhoneKey] as? String,
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,

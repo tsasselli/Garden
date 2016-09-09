@@ -19,6 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZwI-Tu-uHW">
+                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="xZf-ro-nSB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="9jC-fN-4T3" id="3g2-nS-JVU"/>
+                                </connections>
+                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="169" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nk4-dr-gSD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,12 +74,6 @@
                                     <outlet property="delegate" destination="9jC-fN-4T3" id="Nbu-34-ave"/>
                                 </connections>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZwI-Tu-uHW">
-                                <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="xZf-ro-nSB"/>
-                                </constraints>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,6 +101,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapHeightConstraint" destination="xZf-ro-nSB" id="4uD-x6-MCH"/>
+                        <outlet property="mapView" destination="ZwI-Tu-uHW" id="Fn8-N3-egR"/>
                         <outlet property="tableView" destination="nk4-dr-gSD" id="aCJ-jx-Zfk"/>
                     </connections>
                 </viewController>

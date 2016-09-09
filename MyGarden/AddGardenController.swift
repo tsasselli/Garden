@@ -27,14 +27,14 @@ class AddGarderController {
         }
     }
     
-    func createNewGarden(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: String?, gdContact: String?, gdPhone: String?, profileImgData: UIImage, backgroundImg: UIImage, /*collectionViewImg: UIImage,*/ completion: ((Garden?) -> Void)?) {
+    func createNewGarden(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?, profileImgData: UIImage, backgroundImg: UIImage, /*collectionViewImg: UIImage,*/ completion: ((Garden?) -> Void)?) {
         guard let profImageData: NSData = UIImageJPEGRepresentation(profileImgData, 0.4),
-            backgroundImgData: NSData = UIImageJPEGRepresentation(backgroundImg, 0.6) else { return }
+            backgroundImgData: NSData = UIImageJPEGRepresentation(backgroundImg, 0.6) else { print ("Unable to create image data"); return  }
 //                  collectionViewImgData: NSData = UIImageJPEGRepresentation(collectionViewImg, 0.8) else { return }
 //        
         let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profImageData, backgroundImgData: backgroundImgData /*collectionViewImgData: [collectionViewImgData])*/ )
         
-        guard let record = garden.cloudKitRecord else { return }
+        guard let record = garden.cloudKitRecord else { print(" Error no record created"); return }
         
         self.cloudKitManager.saveRecord(record) { (record, error) in
             guard let record = record else {

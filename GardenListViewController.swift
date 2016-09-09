@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import MapKit
 
-class GardenListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet weak var tableView: UITableView!
+class GardenListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
-
     
     let refreshControl: UIRefreshControl = UIRefreshControl()
-   
+    var locationManager: CLLocationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 1000
+
+    // MARK: View Loading Functions 
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
@@ -26,9 +30,12 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     let refreshControl = UIRefreshControl()
+        setupMapView()
         
-       self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        let refreshControl = UIRefreshControl()
+        
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView?.addSubview(refreshControl)
         
@@ -37,24 +44,23 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenDetailControllerDidRefreshNotification , object: nil)
     }
     
-    @IBAction func toggleMap(sender: AnyObject) {
-        mapHeightConstraint.active = !mapHeightConstraint.active
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: { 
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+    func gardensWereUpdated(notification: NSNotification) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
     }
-    
+
     func refresh () {
         GardenDetailController.sharedController.fetchRecords { (_) in
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         }
     }
-   
-    func gardensWereUpdated(notification: NSNotification) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-           self.tableView.reloadData()
-        })
+    
+    // MARK: TableView DataSource Functions
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return GardenDetailController.sharedController.garden.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,22 +68,46 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         let garden = GardenDetailController.sharedController.garden[indexPath.row]
         
-        
         item.backgroundImgView.image = garden.backgroundImg
         item.profileImgView.image = garden.profileImg
         item.gardenNameLabel.text = garden.gdName
         
         return item
     }
+    
+    // MARK: Map Kit/Core Location Setup
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GardenDetailController.sharedController.garden.count
+    
+    @IBAction func toggleMap(sender: AnyObject) {
+        mapHeightConstraint.active = !mapHeightConstraint.active
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     
-    // MARK: - Navigation
+    func setupMapView () {
+        self.locationManager.delegate = self
+        self.locationManager.distanceFilter = kCLHeadingFilterNone
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.mapView?.showsUserLocation = true
+        self.mapView.delegate = self
+    }
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000)
+        self.mapView!.setRegion(region, animated: true)
+    }
+
+
+    
+      // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toGardenDetail" {
@@ -89,8 +119,5 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
                 detailViewController.garden = garden[selectedIndexPath.row]
             }
         }
-
     }
-    
-
 }

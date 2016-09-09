@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -26,11 +27,6 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     var imagePicker = UIImagePickerController()
     var isFromFirst: Bool = false
     var garden: Garden?
-
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +34,9 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         imagePicker.delegate = self
         
-              NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
-
+        
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: addGardenControllerDidRefreshNotification, object: nil)
@@ -50,12 +46,13 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-
+    
     
     func gardensWereUpdated (){
-      
+        
     }
     
+    // MARK: Create CloudKit Record Function
     
     @IBAction func createGarden(sender: AnyObject) {
         
@@ -65,15 +62,22 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         let location = LocationTextField.text
         let contact = contactNameTextField.text
         let phone = phoneTextField.text
-         let profImg = profileImg.image
-         let backgroundImgs = backgroundImg.image
+        let profImg = profileImg.image
+        let backgroundImgs = backgroundImg.image
         // let collectionViewImgs = collectionViewImg.image
         
+        print(location)
         
-        AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
+        guard let newlocation = location else { return }
+        
+        
+        let addressAsLocation  = forwardGeoCodeAddress(newlocation)
+        print(addressAsLocation)
             
-        })
-
+            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: addressAsLocation, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
+                
+            })
+        
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("GardenListViewController") as! GardenListViewController
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -91,15 +95,27 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
+    //MARK: Reverse Geo-Coding
     
-// MARK: Gesture and Image Picker Functions
+    func forwardGeoCodeAddress (address: String) -> CLLocation? {
+        let geoCoder = CLGeocoder()
+        var location: CLLocation?
+        
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            if let placemark = placemarks?.first {
+                location = placemark.location
+            }
+            
+        }
+        return location
+    }
+    
+    // MARK: Gesture and Image Picker Functions
     
     @IBAction func backgroundImgTapped(sender: AnyObject) {
         self.isFromFirst = true
         presentActionSheet()
     }
-    
-    
     
     @IBAction func profileImgTapped(sender: AnyObject) {
         self.isFromFirst = false
@@ -139,7 +155,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
         if self.isFromFirst {
             self.backgroundImg.image = image
@@ -148,14 +164,10 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         dismissViewControllerAnimated(true, completion: nil)
-
+        
     }
     
-    
-
-    
-    
-// MARK: Text Field/Keyboard Functions
+    // MARK: Text Field/Keyboard Functions
     
     
     func textFieldShouldReturn (textField: UITextField) -> Bool {
@@ -168,7 +180,6 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         return textFields
         
     }
-    
     
     func keyboardWillShow(notification: NSNotification) {
         
@@ -185,8 +196,8 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
             scrollView.scrollRectToVisible((LocationTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((phoneTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((descriptionTextField.superview?.frame)!, animated: true)
-
-
+            
+            
         }
     }
     
@@ -198,11 +209,6 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, scrollView.contentSize.height)
     }
-    
-
-    
-    
-    
     
     // MARK: - Navigation
     

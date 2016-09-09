@@ -24,20 +24,12 @@ class ListTableViewCell: UITableViewCell {
         profileImgView.layer.cornerRadius = profileImgView.frame.size.width/2
         profileImgView.clipsToBounds = true
         
-//        let gardensArray = GardenDetailController.sharedController.garden
-//        
-//        for garden in gardensArray {
-//            backgroundImgView.image = garden.backgroundImg
-//            profileImgView.image = garden.profileImg
-//            gardenNameLabel.text = garden.gdName
-//            
-//        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+
     }
 
 }
