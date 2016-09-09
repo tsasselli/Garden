@@ -71,13 +71,13 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         guard let newlocation = location else { return }
         
         
-        let addressAsLocation  = forwardGeoCodeAddress(newlocation)
-        print(addressAsLocation)
-            
-            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: addressAsLocation, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
+        forwardGeoCodeAddress(newlocation) { (location) in
+          
+            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
                 
             })
-        
+        }
+
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("GardenListViewController") as! GardenListViewController
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -97,17 +97,20 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     //MARK: Reverse Geo-Coding
     
-    func forwardGeoCodeAddress (address: String) -> CLLocation? {
+    func forwardGeoCodeAddress (address: String, completion: (location: CLLocation?) -> Void   ) {
         let geoCoder = CLGeocoder()
         var location: CLLocation?
         
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             if let placemark = placemarks?.first {
                 location = placemark.location
+            } else {
+                print("\(error?.localizedDescription)")
             }
-            
+            completion(location: location)
+                
         }
-        return location
+        
     }
     
     // MARK: Gesture and Image Picker Functions
