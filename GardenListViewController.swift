@@ -18,23 +18,24 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
-
-    // MARK: View Loading Functions 
+    
+    var garden: Garden?
+    
+    // MARK: View Loading Functions
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
+        tableView.reloadData()
         GardenDetailController.sharedController.fetchRecords()
     }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupMapView()
-        
-        
         let refreshControl = UIRefreshControl()
-        
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView?.addSubview(refreshControl)
@@ -49,7 +50,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         })
     }
-
+    
     func refresh () {
         GardenDetailController.sharedController.fetchRecords { (_) in
             self.tableView.reloadData()
@@ -76,7 +77,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     // MARK: Map Kit/Core Location Setup
-
+    
     
     @IBAction func toggleMap(sender: AnyObject) {
         mapHeightConstraint.active = !mapHeightConstraint.active
@@ -96,6 +97,24 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         self.mapView.delegate = self
     }
     
+//        var sortedGardens: [Garden] {
+//        var sortedGardens: [Garden] = []
+//        let garden = GardenDetailController.sharedController.garden
+//        var lat: Double
+//        var lng: Double
+//        let location = CLLocation(latitude: lat, longitude: lng)
+//        var clLocation: CLLocation? {
+//            return CLLocation(latitude: lat, longitude: lng)
+//        }
+//    }
+    
+//
+//
+//        sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation(clLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
+//        
+//        return sortedGardens
+//    }
+//    
 
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -103,10 +122,10 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000)
         self.mapView!.setRegion(region, animated: true)
     }
-
-
     
-      // MARK: - Navigation
+    
+    
+    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

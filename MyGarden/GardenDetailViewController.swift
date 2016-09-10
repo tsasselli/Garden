@@ -27,6 +27,7 @@ class GardenDetailViewController: UIViewController {
         
         profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2
         profImageLabel.clipsToBounds = true
+        
 
         
         updateWithGarden()
@@ -48,8 +49,7 @@ class GardenDetailViewController: UIViewController {
             
         }
     }
-    
-    
+      
     //    func requestFullSync(completion: (() -> Void)? = nil) {
     //
     //        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
