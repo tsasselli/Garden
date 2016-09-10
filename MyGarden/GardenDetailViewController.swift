@@ -21,23 +21,21 @@ class GardenDetailViewController: UIViewController {
     
     var garden: Garden?
     
+    
     override func viewDidLoad() {
         
         _ = GardenDetailController()
         
-        profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2
-        profImageLabel.clipsToBounds = true
-        
-
-        
+//        profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/1.6
+//        profImageLabel.clipsToBounds = true
+    
         updateWithGarden()
         
     }
-    
+   
     func updateWithGarden () {
         if let garden = garden {
-            
-            
+
             nameLabel.text = ("Garden Name: \(garden.gdName!)")
             phoneLabel.text = ("Phone Number: \(garden.gdPhone!)")
             contactNameLabel.text = ("Contact Name: \(garden.gdContact!)")

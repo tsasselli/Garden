@@ -27,10 +27,14 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     var imagePicker = UIImagePickerController()
     var isFromFirst: Bool = false
     var garden: Garden?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+        self.profileImg.layer.borderColor = UIColor.whiteColor().CGColor
+        self.profileImg.layer.borderWidth = 4.0
+        self.profileImg.layer.masksToBounds = false
         
         imagePicker.delegate = self
         
@@ -95,7 +99,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
-    //MARK: Reverse Geo-Coding
+    //MARK: Forward Geo-Coding
     
     func forwardGeoCodeAddress (address: String, completion: (location: CLLocation?) -> Void   ) {
         let geoCoder = CLGeocoder()
@@ -118,8 +122,14 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     @IBAction func backgroundImgTapped(sender: AnyObject) {
         self.isFromFirst = true
         presentActionSheet()
-    }
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
     
+        
+    }
+
     @IBAction func profileImgTapped(sender: AnyObject) {
         self.isFromFirst = false
         
@@ -157,8 +167,8 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
         
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
         if self.isFromFirst {
             self.backgroundImg.image = image
@@ -168,7 +178,13 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         dismissViewControllerAnimated(true, completion: nil)
         
+    
+        }
+   
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
+}
     
     // MARK: Text Field/Keyboard Functions
     
@@ -221,5 +237,5 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     //
     //     }
     //
-    
 }
+
