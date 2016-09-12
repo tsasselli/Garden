@@ -31,10 +31,10 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = true
         self.profileImg.layer.borderColor = UIColor.whiteColor().CGColor
         self.profileImg.layer.borderWidth = 4.0
-        self.profileImg.layer.masksToBounds = true
+       // self.profileImg.layer.masksToBounds = false
         
         imagePicker.delegate = self
         

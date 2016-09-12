@@ -24,20 +24,19 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     var garden: Garden?
     
-  
+    
     // MARK: View Loading Functions
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-        GardenDetailController.sharedController.fetchRecords()
+        // GardenDetailController.sharedController.fetchRecords()
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  addAnnotatoinToMap()
         setupMapView()
         
         let refreshControl = UIRefreshControl()
@@ -53,6 +52,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     func gardensWereUpdated(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
+            self.addAnnotatoinToMap()
         })
     }
     
@@ -66,20 +66,20 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: TableView DataSource Functions
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GardenDetailController.sharedController.garden.count
+        return GardenDetailController.sharedController.gardens.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let item = tableView.dequeueReusableCellWithIdentifier("gardenListCell", forIndexPath: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         
-        let garden = GardenDetailController.sharedController.garden[indexPath.row]
+        let garden = GardenDetailController.sharedController.gardens[indexPath.row]
         
-                
+        
         item.backgroundImgView.image = garden.backgroundImg
         item.profileImgView.image = garden.profileImg
         item.gardenNameLabel.text = garden.gdName
-       // item.locationLabel.text = garden.gdLocation
-    
+        // item.locationLabel.text = garden.gdLocation
+        
         
         return item
     }
@@ -107,41 +107,39 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func addAnnotatoinToMap () {
-        
-        if let garden = garden {
-            
-
-            let gardenAnnotation = GardenAnnotation(coordinate: (garden.gdLocation?.coordinate)!
-                , title: "new garden", subtitle: "made a new garden")
-            self.mapView.addAnnotation(gardenAnnotation)
-            print("\(gardenAnnotation)")
-            
+        let allGardens = GardenDetailController.sharedController.gardens
+        for garden in allGardens {
+            if let locationCoordinate = garden.gdLocation?.coordinate {
+                let annotation = GardenAnnotation(coordinate: locationCoordinate, title: garden.gdName, subtitle: garden.gdBio)
+                mapView.addAnnotation(annotation)
+            }
         }
     }
-//
-//            var sortedGardens: [Garden] {
-//            var sortedGardens: [Garden] = []
-//            let garden = GardenDetailController.sharedController.garden
-//            var lat: Double
-//            var lng: Double
-//            let location = CLLocation(latitude: lat, longitude: lng)
-//            var clLocation: CLLocation? {
-//                return CLLocation(latitude: lat, longitude: lng)
-//            }
-//        }
-//    
-//
-//    
-//            sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation(clLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
-//    
-//            return sortedGardens
-//        }
-//    
     
+    
+//                var sortedGardens: [Garden] {
+//                var sortedGardens: [Garden] = []
+//                let garden = GardenDetailController.sharedController.gardens
+//                var lat: Double
+//                var lng: Double
+//                let location = CLLocation(latitude: lat, longitude: lng)
+//                var clLocation: CLLocation? {
+//                    return CLLocation(latitude: lat, longitude: lng)
+//                }
+//            }
+    
+    
+//    
+//             let   sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation() < $0.1.clLocation?.distanceFromLocation(currentLocation) })
+//    
+//                return sortedGardens
+//            }
+//
+
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
-        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000)
+        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 3000, 3000)
         self.mapView!.setRegion(region, animated: true)
     }
     
@@ -157,7 +155,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             if let detailViewController = segue.destinationViewController as? GardenDetailViewController,
                 selectedIndexPath = self.tableView.indexPathForSelectedRow {
                 
-                let garden = GardenDetailController.sharedController.garden
+                let garden = GardenDetailController.sharedController.gardens
                 detailViewController.garden = garden[selectedIndexPath.row]
             }
         }

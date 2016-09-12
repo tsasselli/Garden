@@ -25,7 +25,7 @@ class GardenDetailController {
     var isSyncing: Bool = false
 
     
-    private(set) var garden: [Garden] = [] {
+    private(set) var gardens: [Garden] = [] {
         
         didSet {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -51,7 +51,7 @@ class GardenDetailController {
             
 //            print(records.description)
             
-            self.garden = records.flatMap { Garden(record: $0) }
+            self.gardens = records.flatMap { Garden(record: $0) }
             
         }
     }
@@ -79,7 +79,7 @@ class GardenDetailController {
             
             print(records.description)
             
-            self.garden = records.flatMap { Garden(record: $0) }
+            self.gardens = records.flatMap { Garden(record: $0) }
             
         }
     }
