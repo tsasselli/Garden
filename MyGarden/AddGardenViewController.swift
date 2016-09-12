@@ -38,6 +38,12 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         imagePicker.delegate = self
         
+        self.nameTextField.nextField = self.descriptionTextField
+        self.descriptionTextField.nextField = productTextField
+        self.productTextField.nextField = locationTextField
+        self.locationTextField.nextField = self.contactNameTextField
+        self.contactNameTextField.nextField = self.phoneTextField
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
         
@@ -184,17 +190,6 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     // MARK: Text Field/Keyboard Functions
     
     
-    func textFieldShouldReturn (textField: UITextField) -> Bool {
-        let textFields = productTextField.resignFirstResponder()
-        nameTextField.resignFirstResponder()
-        descriptionTextField.resignFirstResponder()
-        contactNameTextField.resignFirstResponder()
-        phoneTextField.resignFirstResponder()
-        locationTextField.resignFirstResponder()
-        return textFields
-        
-    }
-    
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -204,12 +199,12 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
             
             scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, scrollView.contentSize.height)
             
-            scrollView.scrollRectToVisible((nameTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((productTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((contactNameTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((locationTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((phoneTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((descriptionTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((nameTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((productTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((contactNameTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((locationTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((phoneTextField.superview?.frame)!, animated: true)
+//            scrollView.scrollRectToVisible((descriptionTextField.superview?.frame)!, animated: true)
             
             
         }
@@ -223,6 +218,14 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, scrollView.contentSize.height)
     }
+   
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.nextField?.becomeFirstResponder()
+        phoneTextField.resignFirstResponder()
+        return true
+    }
+
+    
     
     // MARK: - Navigation
     
@@ -232,5 +235,23 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     //
     //     }
     //
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        textField.nextField?.becomeFirstResponder()
+//        return true
+//    }
+// 
+   
+}
+private var kAssociationKeyNextField: UInt8 = 0
+
+extension UITextField {
+    var nextField: UITextField? {
+        get {
+            return objc_getAssociatedObject(self, &kAssociationKeyNextField) as? UITextField
+        }
+        set(newField) {
+            objc_setAssociatedObject(self, &kAssociationKeyNextField, newField, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
 }
 
