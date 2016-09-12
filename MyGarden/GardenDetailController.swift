@@ -16,7 +16,8 @@ class GardenDetailController {
     init () {
         
     fetchRecords()
-    
+
+        
     }
     
     static let sharedController = GardenDetailController()
@@ -55,6 +56,36 @@ class GardenDetailController {
         }
     }
     
+    // need this function to query just for location data from the cloud 
+    
+    
+    
+    func fetchLocationRecords(completion: () -> Void)  {
+        var gardens: Garden?
+        
+       guard let gardenLocation = gardens!.gdLocation else { completion(); return }
+        let predicate = NSPredicate(format: "gardenLocation == %@", gardenLocation)
+        
+        cloudKitManager.fetchRecordsWithType(Garden.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
+            
+        }) { (records, error) in
+            if let error = error {0
+                print(" Error: Unable to fetch Garden record from cloudKit. \(error.localizedDescription)")
+                
+                return
+            }
+            
+            guard let records = records else { return }
+            
+            print(records.description)
+            
+            self.garden = records.flatMap { Garden(record: $0) }
+            
+        }
+    }
+    
+
+//
 //    func pushChangesToCloudKit(completion: ((success: Bool, error: NSError?) -> Void)?) {
 //        
 //        let unsavedPosts = unsyncedRecords(Garden.typeKey) as? [Garden] ?? []

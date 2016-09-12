@@ -107,12 +107,12 @@
 		64B9842E1D762ADC00872B7C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6448213B1D83308A00A46356 /* GardenAnnotation.swift */,
 				64B984271D762A4900872B7C /* Info.plist */,
 				64B984221D762A4900872B7C /* Assets.xcassets */,
 				64B9841B1D762A4900872B7C /* AppDelegate.swift */,
 				64B9843D1D76583800872B7C /* CloudKitManager.swift */,
 				641270A01D7FB79A00F02DBA /* CloudKitSyncable.swift */,
-				6448213B1D83308A00A46356 /* GardenAnnotation.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";

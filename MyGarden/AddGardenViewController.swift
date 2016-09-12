@@ -15,7 +15,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var productTextField: UITextField!
-    @IBOutlet weak var LocationTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var contactNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var profileImg: UIImageView!
@@ -34,7 +34,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         self.automaticallyAdjustsScrollViewInsets = false
         self.profileImg.layer.borderColor = UIColor.whiteColor().CGColor
         self.profileImg.layer.borderWidth = 4.0
-        self.profileImg.layer.masksToBounds = false
+        self.profileImg.layer.masksToBounds = true
         
         imagePicker.delegate = self
         
@@ -63,7 +63,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         let gardenName = nameTextField.text
         let gardenBio = descriptionTextField.text
         let product = productTextField.text
-        let location = LocationTextField.text
+        let location = locationTextField.text
         let contact = contactNameTextField.text
         let phone = phoneTextField.text
         let profImg = profileImg.image
@@ -77,8 +77,8 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         forwardGeoCodeAddress(newlocation) { (location) in
           
-            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
-                
+            AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, gdAddress: self.locationTextField.text, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
+                print("successully initialized new garden object")
             })
         }
 
@@ -122,12 +122,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     @IBAction func backgroundImgTapped(sender: AnyObject) {
         self.isFromFirst = true
         presentActionSheet()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
-        
-        presentViewController(imagePicker, animated: true, completion: nil)
-    
-        
+              
     }
 
     @IBAction func profileImgTapped(sender: AnyObject) {
@@ -195,7 +190,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         descriptionTextField.resignFirstResponder()
         contactNameTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
-        LocationTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
         return textFields
         
     }
@@ -212,7 +207,7 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
             scrollView.scrollRectToVisible((nameTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((productTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((contactNameTextField.superview?.frame)!, animated: true)
-            scrollView.scrollRectToVisible((LocationTextField.superview?.frame)!, animated: true)
+            scrollView.scrollRectToVisible((locationTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((phoneTextField.superview?.frame)!, animated: true)
             scrollView.scrollRectToVisible((descriptionTextField.superview?.frame)!, animated: true)
             

@@ -22,6 +22,7 @@ class Garden {
     static let profileImgKey = "profileImg"
     static let backgroundImgKey = "backgroundImg"
     static let collectViewImgKey = "collectionViewImg"
+    static let addressKey = "addressKey"
     
     var gdName: String?
     var gdBio: String?
@@ -29,7 +30,8 @@ class Garden {
     var gdLocation: CLLocation?
     var gdContact: String?
     var gdPhone: String?
-  //  var gdRecordID: CKRecordID?
+    var gdAddress: String?
+    //var gdRecordID: CKRecordID?
     
     var profileImgData: NSData?
     
@@ -50,7 +52,7 @@ class Garden {
 //        return [UIImage(data: collectViewImgData)!]
 //    }
     
-    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData? /*gdRecordID: CKRecordID? collectionViewImgData: [NSData]*/) {
+    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData?, gdAddress: String?/* gdRecordID: CKRecordID? ,collectionViewImgData: [NSData]*/) {
         
         self.gdName = gdName
         self.gdBio = gdBio
@@ -60,7 +62,8 @@ class Garden {
         self.gdPhone = gdPhone
         self.profileImgData = profileImgData
         self.backgroundImgData = backgroundImgData
-    //    self.gdRecordID = gdRecordID
+//        self.gdRecordID = gdRecordID
+        self.gdAddress = gdAddress
     }
     
     private var temporaryBackgroundPhotoURL: NSURL {
@@ -94,8 +97,9 @@ class Garden {
             gdContact = record[Garden.gdContactKey] as? String,
             gdPhone = record[Garden.gdPhoneKey] as? String,
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,
-            backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset
-         //   gdRecordID = record[Garden.gardenRecordKey] as? CKRecordID
+            backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset,
+            gdAddress = record[Garden.addressKey] as? String
+       //     gdRecordID = record[Garden.gardenRecordId] as? CKRecordID
            /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
             print("failable Init failed")
             return nil}
@@ -103,7 +107,7 @@ class Garden {
         let profilePhotoData = NSData(contentsOfURL: profileImgAsset.fileURL)
         let backroundPhotoData = NSData(contentsOfURL: backgroundImgAsset.fileURL)
        
-        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData /* gdRecordID:  gdRecordID, collectionViewImgData: collectViewImgData)*/)
+        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData, gdAddress: gdAddress /* gdRecordID:  gdRecordID, collectionViewImgData: collectViewImgData)*/)
     }
     
     var cloudKitRecordID: CKRecordID?
@@ -117,6 +121,7 @@ class Garden {
         record[Garden.gdLocationKey] = gdLocation
         record[Garden.gdContactKey] = gdContact
         record[Garden.gdPhoneKey] = gdPhone
+        record[Garden.addressKey] = gdAddress
         record[Garden.profileImgKey] = CKAsset(fileURL: temporaryProfilePhotoURL)
         record[Garden.backgroundImgKey] = CKAsset(fileURL: temporaryBackgroundPhotoURL)
        /* record[Garden.collectViewImgKey] = collectViewImgData */

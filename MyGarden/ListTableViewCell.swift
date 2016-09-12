@@ -15,6 +15,7 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var gardenNameLabel: UILabel!
 
+    @IBOutlet weak var locationLabel: UILabel!
     
     
     
@@ -23,7 +24,7 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         
-        gardenNameLabel.layer.cornerRadius = CGRectGetHeight(gardenNameLabel.bounds)/2.0
+        gardenNameLabel.layer.cornerRadius = CGRectGetHeight(gardenNameLabel.bounds)/2.8
         profileImgView.layer.cornerRadius = profileImgView.frame.size.width/2
         self.profileImgView.layer.borderWidth = 1.5
         self.profileImgView.layer.borderColor = UIColor.whiteColor().CGColor

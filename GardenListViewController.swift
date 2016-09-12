@@ -18,9 +18,13 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
+    var currertLocatoin: CLLocation?
+    var coordinate: CLLocationCoordinate2D?
+    var geocoder: CLGeocoder = CLGeocoder()
     
     var garden: Garden?
     
+  
     // MARK: View Loading Functions
     
     override func viewWillAppear(animated: Bool) {
@@ -29,12 +33,13 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         GardenDetailController.sharedController.fetchRecords()
     }
     
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      //  addAnnotatoinToMap()
         setupMapView()
+        
         let refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
@@ -69,9 +74,12 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         let garden = GardenDetailController.sharedController.garden[indexPath.row]
         
+                
         item.backgroundImgView.image = garden.backgroundImg
         item.profileImgView.image = garden.profileImg
         item.gardenNameLabel.text = garden.gdName
+       // item.locationLabel.text = garden.gdLocation
+    
         
         return item
     }
@@ -86,7 +94,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             }, completion: nil)
     }
     
-    
     func setupMapView () {
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = kCLHeadingFilterNone
@@ -97,31 +104,47 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         self.mapView.delegate = self
     }
     
-//        var sortedGardens: [Garden] {
-//        var sortedGardens: [Garden] = []
-//        let garden = GardenDetailController.sharedController.garden
-//        var lat: Double
-//        var lng: Double
-//        let location = CLLocation(latitude: lat, longitude: lng)
-//        var clLocation: CLLocation? {
-//            return CLLocation(latitude: lat, longitude: lng)
-//        }
-//    }
     
-//
-//
-//        sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation(clLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
-//        
-//        return sortedGardens
-//    }
-//    
+    
+    func addAnnotatoinToMap () {
+        
+        if let garden = garden {
+            
 
+            let gardenAnnotation = GardenAnnotation(coordinate: (garden.gdLocation?.coordinate)!
+                , title: "new garden", subtitle: "made a new garden")
+            self.mapView.addAnnotation(gardenAnnotation)
+            print("\(gardenAnnotation)")
+            
+        }
+    }
+//
+//            var sortedGardens: [Garden] {
+//            var sortedGardens: [Garden] = []
+//            let garden = GardenDetailController.sharedController.garden
+//            var lat: Double
+//            var lng: Double
+//            let location = CLLocation(latitude: lat, longitude: lng)
+//            var clLocation: CLLocation? {
+//                return CLLocation(latitude: lat, longitude: lng)
+//            }
+//        }
+//    
+//
+//    
+//            sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation(clLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
+//    
+//            return sortedGardens
+//        }
+//    
+    
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
         let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 5000, 5000)
         self.mapView!.setRegion(region, animated: true)
     }
+    
     
     
     

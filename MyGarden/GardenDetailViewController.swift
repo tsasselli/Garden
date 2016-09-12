@@ -26,8 +26,8 @@ class GardenDetailViewController: UIViewController {
         
         _ = GardenDetailController()
         
-//        profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/1.6
-//        profImageLabel.clipsToBounds = true
+       profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2.0
+        profImageLabel.clipsToBounds = true
     
         updateWithGarden()
         
@@ -41,28 +41,13 @@ class GardenDetailViewController: UIViewController {
             contactNameLabel.text = ("Contact Name: \(garden.gdContact!)")
             descriptionLabel.text = ("Description: \(garden.gdBio!)")
             productsLabel.text = ("Products: \(garden.gdProducts!)")
-            locationLabel.text = ("Location: \(garden.gdLocation!)")
+            locationLabel.text = ("Location: \(garden.gdAddress ?? "No Address Availble")")
             backgroundImageLabel.image = garden.backgroundImg
             profImageLabel.image = garden.profileImg
             
         }
     }
       
-    //    func requestFullSync(completion: (() -> Void)? = nil) {
-    //
-    //        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    //
-    //        GardenDetailController.sharedController.fetchRecords() {
-    //
-    //            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    //
-    //            if let completion = completion {
-    //                completion()
-    //            }
-    //        }
-    //    }
-    
-    
     
     
     
