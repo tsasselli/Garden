@@ -15,31 +15,45 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
     
-    let refreshControl: UIRefreshControl = UIRefreshControl()
+//    let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var currertLocatoin: CLLocation?
     var coordinate: CLLocationCoordinate2D?
     var geocoder: CLGeocoder = CLGeocoder()
-
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        
+        GardenDetailController.sharedController.fetchRecords()
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+        
+    }
+    
     
     
     // MARK: View Loading Functions
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
-       
+        
         let refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
+//        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        self.refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView?.addSubview(refreshControl)
         
         GardenDetailController.sharedController.fetchRecords()
@@ -55,14 +69,15 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-    func refresh () {
-        GardenDetailController.sharedController.fetchRecords { (_) in
-            self.tableView.reloadData()
-            GardenDetailController.sharedController.fetchRecords()
-        }
-        self.refreshControl.endRefreshing()
-
-    }
+//    func refresh () {
+//        GardenDetailController.sharedController.fetchRecords { (_) in
+//            
+//            self.refreshControl.endRefreshing()
+//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//        }
+//        self.tableView.reloadData()
+//    }
+    
     
     // MARK: TableView DataSource Functions
     
@@ -168,19 +183,19 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-//        let   sortedGardens = gardens.sort({ $0.0.clLocation.distanceFromLocation(self.currentLocation) < $0.1.clLocation?.distanceFromLocation(self.currentLocation) })
-//
-//    
-//        var sortedGardens: [Garden] {
-//            var sortedGardens: [Garden] = []
-//    
-//            guard let currentLocation = currentLocation else { return sortedGardens }
-//    
-//            sortedGardens = gardens.sort({ $0.0.clLocation?.distanceFromLocation(currentLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
-//    
-//            return sortedGardens
-//        }
-//    
+    //        let   sortedGardens = gardens.sort({ $0.0.clLocation.distanceFromLocation(self.currentLocation) < $0.1.clLocation?.distanceFromLocation(self.currentLocation) })
+    //
+    //
+    //        var sortedGardens: [Garden] {
+    //            var sortedGardens: [Garden] = []
+    //
+    //            guard let currentLocation = currentLocation else { return sortedGardens }
+    //
+    //            sortedGardens = gardens.sort({ $0.0.clLocation?.distanceFromLocation(currentLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
+    //
+    //            return sortedGardens
+    //        }
+    //
     
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -211,3 +226,5 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 }
+
+

@@ -19,5 +19,98 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GardenListViewController.swift"
+            timestampString = "495494544.585538"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "refreshControl"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.GardenListViewController.refreshControl.getter : __ObjC.UIRefreshControl"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/GardenListViewController.swift"
+                  timestampString = "495494545.646825"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.GardenListViewController.refreshControl.setter : __ObjC.UIRefreshControl"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/GardenListViewController.swift"
+                  timestampString = "495494545.647121"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.GardenListViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; MyGarden.GardenListViewController"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/GardenListViewController.swift"
+                  timestampString = "495494545.647283"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "528">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.GardenListViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;MyGarden.GardenListViewController&gt;"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/GardenListViewController.swift"
+                  timestampString = "495494545.647434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyGarden.GardenListViewController.(refreshControl.getter : __ObjC.UIRefreshControl).(closure #1)"
+                  moduleName = "MyGarden"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Permanaut/Desktop/MyGarden/GardenListViewController.swift"
+                  timestampString = "495494545.647578"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

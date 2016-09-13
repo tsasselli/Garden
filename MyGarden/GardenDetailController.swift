@@ -67,9 +67,11 @@ class GardenDetailController {
 //    
 //
 
-    
-    
-    
+//    
+//    func deleteRecord (completion: ((NSError?) -> Void)? = nil) {
+//        
+//        cloudKitManager.deleteRecordWithID(<#T##recordID: CKRecordID##CKRecordID#>, completion: <#T##((recordID: CKRecordID?, error: NSError?) -> Void)?##((recordID: CKRecordID?, error: NSError?) -> Void)?##(recordID: CKRecordID?, error: NSError?) -> Void#>)    }
+//    
     
     //    func deleteRecordWithID(recordID: CKRecordID, completion: ((recordID: CKRecordID?, error: NSError?) -> Void)?) {
     //
