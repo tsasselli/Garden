@@ -22,7 +22,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     var coordinate: CLLocationCoordinate2D?
     var geocoder: CLGeocoder = CLGeocoder()
     
-    var garden: Garden?
     
     
     // MARK: View Loading Functions
@@ -30,7 +29,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-        // GardenDetailController.sharedController.fetchRecords()
+         GardenDetailController.sharedController.fetchRecords()
     }
     
     
@@ -138,31 +137,49 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         if let annotationView = annotationView {
             // Configure your annotation view here
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "hand.png")//?.drawInRect(CGRectMake(30, 30, 30, 30))
+            annotationView.image = UIImage(named: "hand1.png")
         }
         
         return annotationView
     }
     
-//                var sortedGardens: [Garden] {
-//                var sortedGardens: [Garden] = []
-//                let garden = GardenDetailController.sharedController.gardens
-//                var lat: Double
-//                var lng: Double
-//                let location = CLLocation(latitude: lat, longitude: lng)
-//                var clLocation: CLLocation? {
-//                    return CLLocation(latitude: lat, longitude: lng)
-//                }
-//            }
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            
+            // performSegueWithIdentifier("toGardenDetail", sender: view)
+            if let annotation = view.annotation {
+                
+                for garden in GardenDetailController.sharedController.gardens {
+                    if annotation.coordinate.latitude == garden.gdLocation?.coordinate.latitude {
+                        performSegueWithIdentifier("toDetailFromAnnotation", sender: garden)
+                    }
+                    
+                }
+                
+            }
+        }
+    }
     
     
-//    
-//             let   sortedGardens = garden.sort({ $0.0.clLocation.distanceFromLocation() < $0.1.clLocation?.distanceFromLocation(currentLocation) })
-//    
-//                return sortedGardens
-//            }
+    
+    let gardens = GardenDetailController.sharedController.gardens
+    
+    
+    
+//        let   sortedGardens = gardens.sort({ $0.0.clLocation.distanceFromLocation(self.currentLocation) < $0.1.clLocation?.distanceFromLocation(self.currentLocation) })
 //
-
+//    
+//        var sortedGardens: [Garden] {
+//            var sortedGardens: [Garden] = []
+//    
+//            guard let currentLocation = currentLocation else { return sortedGardens }
+//    
+//            sortedGardens = gardens.sort({ $0.0.clLocation?.distanceFromLocation(currentLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
+//    
+//            return sortedGardens
+//        }
+//    
+    
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         
@@ -185,6 +202,10 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
                 let garden = GardenDetailController.sharedController.gardens
                 detailViewController.garden = garden[selectedIndexPath.row]
             }
+        } else if segue.identifier == "toDetailFromAnnotation"  {
+            guard let garden = sender as? Garden else { return }
+            let detailVC = segue.destinationViewController as? GardenDetailViewController
+            detailVC?.garden = garden
         }
     }
 }

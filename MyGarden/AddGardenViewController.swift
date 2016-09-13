@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -60,6 +60,16 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     func gardensWereUpdated (){
         
+    }
+    
+    //MARK: Collection View Data Source FUnctions
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        <#code#>
     }
     
     // MARK: Create CloudKit Record Function
