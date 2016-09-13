@@ -19,12 +19,12 @@ class GardenDetailController {
         
         fetchRecords()
         
-    }
+        }
+    
     static let locationMannager = CLLocationManager()
     static let sharedController = GardenDetailController()
     private let cloudKitManager = CloudKitManager()
     var isSyncing: Bool = false
-    
     
     private(set) var gardens: [Garden] = [] {
         
@@ -62,6 +62,14 @@ class GardenDetailController {
     }
     
     
+//    
+//    cloudKitManager.modifyRecords(<#T##records: [CKRecord]##[CKRecord]#>, perRecordCompletion: <#T##((record: CKRecord?, error: NSError?) -> Void)?##((record: CKRecord?, error: NSError?) -> Void)?##(record: CKRecord?, error: NSError?) -> Void#>, completion: <#T##((records: [CKRecord]?, error: NSError?) -> Void)?##((records: [CKRecord]?, error: NSError?) -> Void)?##(records: [CKRecord]?, error: NSError?) -> Void#>)
+//    
+//
+
+    
+    
+    
     
     //    func deleteRecordWithID(recordID: CKRecordID, completion: ((recordID: CKRecordID?, error: NSError?) -> Void)?) {
     //
@@ -71,70 +79,8 @@ class GardenDetailController {
     //    }
     //
     
-    //
-    //        func pushChangesToCloudKit(completion: ((success: Bool, error: NSError?) -> Void)?) {
-    //
-    //            let unsavedGarden = unsyncedRecords(Garden.typeKey) as? [Garden] ?? []
-    //            var unsavedObjectsByRecord = [CKRecord: CloudKitSyncable]()
-    //            for garden in unsavedGarden {
-    //                let record = CKRecord(garden)
-    //                unsavedObjectsByRecord[record] = garden
-    //            }
-    //
-    //
-    //
-    //            let unsavedRecords = Array(unsavedObjectsByRecord.keys)
-    //
-    //            cloudKitManager.saveRecords(unsavedRecords, perRecordCompletion: { (record, error) in
-    //
-    //                guard let record = record else { return }
-    //                unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
-    //
-    //            }) { (records, error) in
-    //
-    //                let success = records != nil
-    //                completion?(success: success, error: error)
-    //            }
-    //        }
     
-    //    // MARK: HELPER Functions
-    //
-    //
-    private func recordsOfType(type: String) -> [CloudKitSyncable] {
-        switch type {
-        case "Garden":
-            return gardens.flatMap { $0 as? CloudKitSyncable }
-        default:
-            return []
-        }
-    }
-    
-    func unsyncedRecords(type: String) -> [CloudKitSyncable] {
-        return recordsOfType(type).filter { !$0.isSynced }
-    }
-    
-    
-    
-    //func performFullSync(completion: (() -> Void)? = nil) {
-    //
-    //    guard !isSyncing else {
-    //        completion?()
-    //        return
-    //    }
-    //
-    //    isSyncing = true
-    //
-    //    pushChangesToCloudKit { (success) in
-    //
-    //        self.fetchRecords(Garden) {
-    //
-    //                self.isSyncing = false
-    //
-    //                completion?()
-    //            }
-    //        }
-    //    }
-}
+  }
 
 
 

@@ -17,7 +17,7 @@ class GardenImageCollectionViewCell: UICollectionViewCell, UIImagePickerControll
         
     }
     
-    func presentActionSheet () {
+//    func presentActionSheet () {
 //        let imagePicker = UIImagePickerController()
 //        imagePicker.delegate = self
 //        let actionSheet = UIAlertController(title: "choose and Image Source", message: nil, preferredStyle:  .ActionSheet)
@@ -61,7 +61,7 @@ class GardenImageCollectionViewCell: UICollectionViewCell, UIImagePickerControll
 //            dismissViewControllerAnimated(true, completion: nil)
 //        }
 //    }
-//    
+    
 
     
 }

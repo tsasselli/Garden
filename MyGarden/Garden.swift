@@ -12,7 +12,6 @@ import CloudKit
 class Garden {
     
     static let typeKey = "Garden"
-    //static let gardenRecordKey = "gardenRecord"
     static let gdNameKey = "gardenName"
     static let gdBioKey = "gardenBio"
     static let gdProductsKey = "gardenPlants"
@@ -31,8 +30,6 @@ class Garden {
     var gdContact: String?
     var gdPhone: String?
     var gdAddress: String?
-    //var gdRecordID: CKRecordID?
-    
     var profileImgData: NSData?
     
     var profileImg: UIImage? {
@@ -99,15 +96,14 @@ class Garden {
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,
             backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset,
             gdAddress = record[Garden.addressKey] as? String
-       //     gdRecordID = record[Garden.gardenRecordId] as? CKRecordID
-           /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
+            /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
             print("failable Init failed")
             return nil}
         
         let profilePhotoData = NSData(contentsOfURL: profileImgAsset.fileURL)
         let backroundPhotoData = NSData(contentsOfURL: backgroundImgAsset.fileURL)
        
-        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData, gdAddress: gdAddress /* gdRecordID:  gdRecordID, collectionViewImgData: collectViewImgData)*/)
+        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData, gdAddress: gdAddress /* collectionViewImgData: collectViewImgData)*/)
     }
     
     var cloudKitRecordID: CKRecordID?
@@ -129,3 +125,17 @@ class Garden {
         return record
     }
 }
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+

@@ -27,6 +27,10 @@ class GardenDetailViewController: UIViewController {
         _ = GardenDetailController()
         
        profImageLabel.layer.cornerRadius = profImageLabel.frame.size.width/2.0
+        self.profImageLabel.layer.borderWidth = 1.5
+        self.profImageLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        
+
         profImageLabel.clipsToBounds = true
     
         updateWithGarden()

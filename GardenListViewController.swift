@@ -29,7 +29,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-         GardenDetailController.sharedController.fetchRecords()
     }
     
     
@@ -52,6 +51,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
             self.addAnnotatoinToMap()
+            GardenDetailController.sharedController.fetchRecords()
         })
     }
     
