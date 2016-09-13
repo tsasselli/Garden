@@ -32,9 +32,13 @@ class User {
     var recordType: String { return Garden.typeKey }
     
     convenience init?(record: CKRecord) {
+        print("KEYS")
+        print(record.allKeys())
         guard let firstName = record[User.firstNameKey] as? String,
             lastName = record[User.lastNameKey] as? String,
-            reference = record[User.referenceKey] as? CKReference else { return nil }
+            reference = record[User.referenceKey] as? CKReference else {
+                return nil
+        }
         
         self.init(firstName: firstName, lastName: lastName, reference: reference, record: record)
     }

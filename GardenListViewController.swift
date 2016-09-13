@@ -15,50 +15,50 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
     
-//    let refreshControl: UIRefreshControl = UIRefreshControl()
+    //    let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var currertLocatoin: CLLocation?
     var coordinate: CLLocationCoordinate2D?
     var geocoder: CLGeocoder = CLGeocoder()
-    
-    func handleRefresh(refreshControl: UIRefreshControl) {
-        
-        GardenDetailController.sharedController.fetchRecords()
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-        
-    }
-    
+    //
+    //    func handleRefresh(refreshControl: UIRefreshControl) {
+    //
+    //        GardenDetailController.sharedController.fetchRecords()
+    //            self.tableView.reloadData()
+    //            refreshControl.endRefreshing()
+    //
+    //    }
+    //
     
     
     // MARK: View Loading Functions
+    //
+    //    lazy var refreshControl: UIRefreshControl = {
+    //        let refreshControl = UIRefreshControl()
+    //        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+    //
+    //        return refreshControl
+    //    }()
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
-        
-        return refreshControl
-    }()
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        tableView.reloadData()
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
-        
-        let refreshControl = UIRefreshControl()
-//        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-//        self.refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView?.addSubview(refreshControl)
-        
         GardenDetailController.sharedController.fetchRecords()
+        UserController.sharedController.fetchCurrentUserRecord { (success) in
+            if success {
+                print("successfully got current user")
+            }
+        }
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenDetailControllerDidRefreshNotification , object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
     
     func gardensWereUpdated(notification: NSNotification) {
@@ -69,14 +69,14 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-//    func refresh () {
-//        GardenDetailController.sharedController.fetchRecords { (_) in
-//            
-//            self.refreshControl.endRefreshing()
-//            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-//        }
-//        self.tableView.reloadData()
-//    }
+    //    func refresh () {
+    //        GardenDetailController.sharedController.fetchRecords { (_) in
+    //
+    //            self.refreshControl.endRefreshing()
+    //            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    //        }
+    //        self.tableView.reloadData()
+    //    }
     
     
     // MARK: TableView DataSource Functions
@@ -98,6 +98,17 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         
         return item
+    }
+    
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            let garden = GardenDetailController.sharedController.gardens[indexPath.row]
+            GardenDetailController.sharedController.deleteRecord(garden)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+        }
     }
     
     // MARK: Map Kit/Core Location Setup

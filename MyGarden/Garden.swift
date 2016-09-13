@@ -31,6 +31,7 @@ class Garden {
     var gdPhone: String?
     var gdAddress: String?
     var profileImgData: NSData?
+    var gdCreator: User
     
     var profileImg: UIImage? {
         guard let profileImgData = profileImgData else { return nil }
@@ -49,7 +50,7 @@ class Garden {
 //        return [UIImage(data: collectViewImgData)!]
 //    }
     
-    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData?, gdAddress: String?/* gdRecordID: CKRecordID? ,collectionViewImgData: [NSData]*/) {
+    init(gdName: String?, gdBio: String?, gdProducts: String?, gdLocation: CLLocation?, gdContact: String?, gdPhone: String?,profileImgData: NSData?, backgroundImgData: NSData?, gdAddress: String?, creator: User/* gdRecordID: CKRecordID? ,collectionViewImgData: [NSData]*/) {
         
         self.gdName = gdName
         self.gdBio = gdBio
@@ -61,6 +62,7 @@ class Garden {
         self.backgroundImgData = backgroundImgData
 //        self.gdRecordID = gdRecordID
         self.gdAddress = gdAddress
+        self.gdCreator = creator
     }
     
     private var temporaryBackgroundPhotoURL: NSURL {
@@ -95,7 +97,8 @@ class Garden {
             gdPhone = record[Garden.gdPhoneKey] as? String,
             profileImgAsset = record[Garden.profileImgKey] as? CKAsset,
             backgroundImgAsset = record[Garden.backgroundImgKey] as? CKAsset,
-            gdAddress = record[Garden.addressKey] as? String
+            gdAddress = record[Garden.addressKey] as? String,
+            creator = record[""] as? User
             /* collectViewImgData = record[Garden.collectViewImgKey] as? [NSData]*/ else {
             print("failable Init failed")
             return nil}
@@ -103,7 +106,8 @@ class Garden {
         let profilePhotoData = NSData(contentsOfURL: profileImgAsset.fileURL)
         let backroundPhotoData = NSData(contentsOfURL: backgroundImgAsset.fileURL)
        
-        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData, gdAddress: gdAddress /* collectionViewImgData: collectViewImgData)*/)
+        self.init(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profilePhotoData, backgroundImgData: backroundPhotoData, gdAddress: gdAddress, creator: creator /* collectionViewImgData: collectViewImgData)*/)
+        self.cloudKitRecordID = record.recordID
     }
     
     var cloudKitRecordID: CKRecordID?

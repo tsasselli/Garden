@@ -31,8 +31,14 @@ class AddGarderController {
         guard let profImageData: NSData = UIImageJPEGRepresentation(profileImgData, 0.4),
             backgroundImgData: NSData = UIImageJPEGRepresentation(backgroundImg, 0.6) else { print ("Unable to create image data"); return  }
 //                  collectionViewImgData: NSData = UIImageJPEGRepresentation(collectionViewImg, 0.8) else { return }
-//        
-        let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profImageData, backgroundImgData: backgroundImgData, gdAddress: gdAddress /*collectionViewImgData: [collectionViewImgData])*/ )
+//      
+        guard let currentUser = UserController.sharedController.loggedInUser else {
+            return
+        }
+        
+            
+    
+        let garden = Garden(gdName: gdName, gdBio: gdBio, gdProducts: gdProducts, gdLocation: gdLocation, gdContact: gdContact, gdPhone: gdPhone, profileImgData: profImageData, backgroundImgData: backgroundImgData, gdAddress: gdAddress, creator: currentUser /*collectionViewImgData: [collectionViewImgData])*/ )
         
         guard let record = garden.cloudKitRecord else { print(" Error no record created"); return }
         

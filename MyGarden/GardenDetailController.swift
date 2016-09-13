@@ -19,7 +19,7 @@ class GardenDetailController {
         
         fetchRecords()
         
-        }
+    }
     
     static let locationMannager = CLLocationManager()
     static let sharedController = GardenDetailController()
@@ -62,24 +62,21 @@ class GardenDetailController {
     }
     
     
-//    
-//    cloudKitManager.modifyRecords(<#T##records: [CKRecord]##[CKRecord]#>, perRecordCompletion: <#T##((record: CKRecord?, error: NSError?) -> Void)?##((record: CKRecord?, error: NSError?) -> Void)?##(record: CKRecord?, error: NSError?) -> Void#>, completion: <#T##((records: [CKRecord]?, error: NSError?) -> Void)?##((records: [CKRecord]?, error: NSError?) -> Void)?##(records: [CKRecord]?, error: NSError?) -> Void#>)
-//    
-//
-
-//    
-//    func deleteRecord (completion: ((NSError?) -> Void)? = nil) {
-//        
-//        cloudKitManager.deleteRecordWithID(<#T##recordID: CKRecordID##CKRecordID#>, completion: <#T##((recordID: CKRecordID?, error: NSError?) -> Void)?##((recordID: CKRecordID?, error: NSError?) -> Void)?##(recordID: CKRecordID?, error: NSError?) -> Void#>)    }
-//    
+    func deleteRecord (garden: Garden?, completion: ((NSError?) -> Void)? = nil) {
+        guard let garden = garden, record = garden.cloudKitRecordID else { return }
+        
+        cloudKitManager.deleteRecordWithID(record) { (recordID, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("successfully deleted record.")
+            }
+            completion?(error)
+        }
+    }
     
-    //    func deleteRecordWithID(recordID: CKRecordID, completion: ((recordID: CKRecordID?, error: NSError?) -> Void)?) {
-    //
-    //        publicDatabase.deleteRecordWithID(recordID) { (recordID, error) in
-    //            completion?(recordID: recordID, error: error)
-    //        }
-    //    }
-    //
+    
+    
     
     
   }
