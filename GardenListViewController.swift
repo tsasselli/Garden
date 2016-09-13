@@ -21,7 +21,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     var currertLocatoin: CLLocation?
     var coordinate: CLLocationCoordinate2D?
     var geocoder: CLGeocoder = CLGeocoder()
-    
+
     
     
     // MARK: View Loading Functions
@@ -36,7 +36,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView()
-        
+       
         let refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: Selector(refresh()), forControlEvents: UIControlEvents.ValueChanged)
@@ -58,8 +58,10 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     func refresh () {
         GardenDetailController.sharedController.fetchRecords { (_) in
             self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
+            GardenDetailController.sharedController.fetchRecords()
         }
+        self.refreshControl.endRefreshing()
+
     }
     
     // MARK: TableView DataSource Functions

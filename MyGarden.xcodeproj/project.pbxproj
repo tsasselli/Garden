@@ -25,7 +25,6 @@
 		64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984411D7664A300872B7C /* GardenDetailController.swift */; };
 		64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984451D7667A500872B7C /* GardenDetailViewController.swift */; };
 		64CDC6601D874EF000D2190E /* GardenAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDC65F1D874EF000D2190E /* GardenAnnotationView.swift */; };
-		64CDC6641D88610C00D2190E /* GardenImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDC6631D88610C00D2190E /* GardenImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +49,6 @@
 		64B984411D7664A300872B7C /* GardenDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailController.swift; sourceTree = "<group>"; };
 		64B984451D7667A500872B7C /* GardenDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailViewController.swift; sourceTree = "<group>"; };
 		64CDC65F1D874EF000D2190E /* GardenAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenAnnotationView.swift; sourceTree = "<group>"; };
-		64CDC6631D88610C00D2190E /* GardenImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +124,6 @@
 				6412709E1D7F84B200F02DBA /* ListTableViewCell.swift */,
 				64B984451D7667A500872B7C /* GardenDetailViewController.swift */,
 				6401074D1D78A187000B3630 /* AddGardenViewController.swift */,
-				64CDC6631D88610C00D2190E /* GardenImageCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -231,7 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B984401D7663E400872B7C /* UserController.swift in Sources */,
-				64CDC6641D88610C00D2190E /* GardenImageCollectionViewCell.swift in Sources */,
 				6401074E1D78A187000B3630 /* AddGardenViewController.swift in Sources */,
 				64B984351D762CAD00872B7C /* Garden.swift in Sources */,
 				64B984331D762B1300872B7C /* User.swift in Sources */,
