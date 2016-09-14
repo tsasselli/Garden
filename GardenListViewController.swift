@@ -15,7 +15,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
     
-    //    let refreshControl: UIRefreshControl = UIRefreshControl()
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     var currertLocatoin: CLLocation?
@@ -45,13 +45,22 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMapView()
+        
         GardenDetailController.sharedController.fetchRecords()
+        
+        setupMapView()
+        
         UserController.sharedController.fetchCurrentUserRecord { (success) in
-            if success {
-                print("successfully got current user")
+            if success == true {
+                print("Successfully fetched logged in user record")
+            } else {
+                UserController.sharedController.createNewUsers({ 
+                    print("Created new user, no previous record found")
+                })
             }
         }
+        
+        
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenDetailControllerDidRefreshNotification , object: nil)
     }
@@ -69,14 +78,17 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-    //    func refresh () {
-    //        GardenDetailController.sharedController.fetchRecords { (_) in
-    //
-    //            self.refreshControl.endRefreshing()
-    //            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    //        }
-    //        self.tableView.reloadData()
-    //    }
+    
+    
+    
+        func refresh () {
+            GardenDetailController.sharedController.fetchRecords { (_) in
+    
+                self.refreshControl.endRefreshing()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            self.tableView.reloadData()
+        }
     
     
     // MARK: TableView DataSource Functions
@@ -190,7 +202,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-    let gardens = GardenDetailController.sharedController.gardens
     
     
     

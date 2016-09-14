@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let cloudKitManager = CloudKitManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         cloudKitManager.requestDiscoverabilityPermission()
         return true
     }

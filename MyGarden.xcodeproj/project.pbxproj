@@ -24,7 +24,6 @@
 		64B984401D7663E400872B7C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9843F1D7663E400872B7C /* UserController.swift */; };
 		64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984411D7664A300872B7C /* GardenDetailController.swift */; };
 		64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B984451D7667A500872B7C /* GardenDetailViewController.swift */; };
-		64CDC6601D874EF000D2190E /* GardenAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CDC65F1D874EF000D2190E /* GardenAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +47,6 @@
 		64B9843F1D7663E400872B7C /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		64B984411D7664A300872B7C /* GardenDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailController.swift; sourceTree = "<group>"; };
 		64B984451D7667A500872B7C /* GardenDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenDetailViewController.swift; sourceTree = "<group>"; };
-		64CDC65F1D874EF000D2190E /* GardenAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GardenAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				6448213B1D83308A00A46356 /* GardenAnnotation.swift */,
-				64CDC65F1D874EF000D2190E /* GardenAnnotationView.swift */,
 				64B984271D762A4900872B7C /* Info.plist */,
 				64B984221D762A4900872B7C /* Assets.xcassets */,
 				64B9841B1D762A4900872B7C /* AppDelegate.swift */,
@@ -236,7 +233,6 @@
 				64B140951D7A18D200BCF16C /* GardenListViewController.swift in Sources */,
 				64B9841C1D762A4900872B7C /* AppDelegate.swift in Sources */,
 				64B984461D7667A500872B7C /* GardenDetailViewController.swift in Sources */,
-				64CDC6601D874EF000D2190E /* GardenAnnotationView.swift in Sources */,
 				64B9843E1D76583800872B7C /* CloudKitManager.swift in Sources */,
 				64B984421D7664A300872B7C /* GardenDetailController.swift in Sources */,
 				6448213C1D83308A00A46356 /* GardenAnnotation.swift in Sources */,

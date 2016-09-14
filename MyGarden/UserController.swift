@@ -22,8 +22,7 @@ class UserController {
     
     private(set) var loggedInUser: User? {
         didSet {
-            print("if there is a first name it will be on the next line")
-            print(loggedInUser)
+            print(loggedInUser?.firstName)
         }
     }
     
@@ -36,47 +35,67 @@ class UserController {
         }
     }
     
-    func fetchCurrentUserRecord(completion: (success: Bool) -> Void) {
-        
+    func createNewUsers(completion: () -> Void) {
         cloudKitManager.fetchLoggedInUserRecord { (record, error) in
-            guard let record = record else { completion(success: false);
-                return
-            }
-            print(record.recordID)
-            //self.currentUserRecordId = record.recordID
+            guard let record = record else { completion(); return }
+            self.currentUserRecordId = record.recordID
+            guard let userRecordID = self.currentUserRecordId else { completion(); return }
             
-            let recordID = record.recordID
+            self.currentUserReference = CKReference(recordID: userRecordID, action: .None)
             
-            //let predicate = NSPredicate(format: "reference == %@", recordID)
-            
-            self.cloudKitManager.fetchRecordWithID(recordID, completion: { (record, error) in
-                if error != nil {
-                    print("Error fetching current user record: \(error?.localizedDescription)")
-                    completion(success: false)
-                } else if let record = record {
-                    print("\n\n\n\n\n\n\n\n\n\nWe have a record: \(record)")
-                    let user = User(record: record)
-                    self.loggedInUser = user
+            self.cloudKitManager.fetchUsernameFromRecordID(userRecordID, completion: { (givenName, familyName) in
+                guard let firstName = givenName,
+                    lastName = familyName,
+                    reference = self.currentUserReference else {
+                        completion()
+                        return
                 }
-            
+                
+                let userRecord = CKRecord(recordType: User.referenceKey)
+                userRecord.setValue(firstName, forKey: User.firstNameKey)
+                userRecord.setValue(lastName, forKey: User.lastNameKey)
+                userRecord.setValue(reference, forKey: User.referenceKey)
+                
+                self.cloudKitManager.saveRecord(userRecord, completion: { (_, error) in
+                    if error != nil {
+                        print("Error saving current user record to cloudKit: \(error?.localizedDescription)")
+                        completion()
+                    }
+                    print("Successfully saved new user to cloudKit.")
+                    completion()
+                })
             })
-            
-            //            self.cloudKitManager.fetchRecordsWithType(User.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
-            //                self.currentUserRecordId = record.recordID
-            //                guard let currentUserID = self.currentUserRecordId else {
-            //                    return
-            //                }
-            //                let user = User(record: record)
-            //
-            //                user?.record = record
-            //                self.loggedInUser = user
-            //                self.currentUserReference = CKReference(recordID: currentUserID, action: .None)
-            //            }) { (records, error) in
-            //
-            //            }
         }
     }
     
-    
-    
+    func fetchCurrentUserRecord(completion: (success: Bool) -> Void) {
+        
+        cloudKitManager.fetchLoggedInUserRecord { (record, error) in
+            guard let record = record else { completion(success: false)
+                print("Error: No record Found")
+                return }
+            self.currentUserRecordId = record.recordID
+            
+            let recordID = record.recordID
+            
+            let predicate = NSPredicate(format: "reference == %@", recordID)
+            
+            self.cloudKitManager.fetchRecordsWithType(User.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
+                self.currentUserRecordId = record.recordID
+                guard let currentUserID = self.currentUserRecordId else {print("Error: No current user found"); return }
+                let user = User(record: record)
+                user?.record = record
+                self.currentUserReference = CKReference(recordID: currentUserID, action: .None)
+            }) { (records, error) in
+                if error != nil {
+                    print("Error fetching current user record: \(error?.localizedDescription)")
+                    completion(success: false)
+                } else if records?.count == 0 {
+                    completion(success: false)
+                } else if records?.count > 0 {
+                    completion(success: true)
+                }
+            }
+        }
+    }
 }

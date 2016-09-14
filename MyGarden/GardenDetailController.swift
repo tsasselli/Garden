@@ -49,14 +49,10 @@ class GardenDetailController {
             }
             
             guard let records = records else { return }
-            
-            //            print(records.description)
+
             guard let currentLocation = GardenDetailController.locationMannager.location else { return }
             
-            
             self.gardens = records.flatMap { Garden(record: $0) }.sort{ $0.0.gdLocation?.distanceFromLocation(currentLocation) < $0.1.gdLocation?.distanceFromLocation(currentLocation)  }
-            
-            //            let   sortedGardens = gardens.sort({ $0.0.clLocation.distanceFromLocation(self.currentLocation) < $0.1.clLocation?.distanceFromLocation(self.currentLocation) })
             
         }
     }
@@ -79,7 +75,7 @@ class GardenDetailController {
     
     
     
-  }
+}
 
 
 
