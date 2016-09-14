@@ -9,39 +9,22 @@
 import UIKit
 import MapKit
 
-class GardenListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
+class GardenListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var mapHeightConstraint: NSLayoutConstraint!
     
-    let refreshControl: UIRefreshControl = UIRefreshControl()
+   // let refreshControl: UIRefreshControl = UIRefreshControl()
     var locationManager: CLLocationManager = CLLocationManager()
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 3000
     var currertLocatoin: CLLocation?
     var coordinate: CLLocationCoordinate2D?
     var geocoder: CLGeocoder = CLGeocoder()
-    //
-    //    func handleRefresh(refreshControl: UIRefreshControl) {
-    //
-    //        GardenDetailController.sharedController.fetchRecords()
-    //            self.tableView.reloadData()
-    //            refreshControl.endRefreshing()
-    //
-    //    }
-    //
-    
-    
-    // MARK: View Loading Functions
-    //
-    //    lazy var refreshControl: UIRefreshControl = {
-    //        let refreshControl = UIRefreshControl()
-    //        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
-    //
-    //        return refreshControl
-    //    }()
-    
-    
+    var regionSet: Bool = false
+    var region: MKCoordinateRegion?
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +37,11 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             if success == true {
                 print("Successfully fetched logged in user record")
             } else {
-                UserController.sharedController.createNewUsers({
+                UserController.sharedController.createNewUsers({ 
                     print("Created new user, no previous record found")
                 })
             }
         }
-        
         
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: #selector(gardensWereUpdated), name: GardenDetailControllerDidRefreshNotification , object: nil)
@@ -76,15 +58,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             self.addAnnotatoinToMap()
             GardenDetailController.sharedController.fetchRecords()
         })
-    }
-    
-    func refresh () {
-        GardenDetailController.sharedController.fetchRecords { (_) in
-            
-            self.refreshControl.endRefreshing()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        }
-        self.tableView.reloadData()
     }
     
     
@@ -142,8 +115,11 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         self.locationManager.startUpdatingLocation()
         self.mapView?.showsUserLocation = true
         self.mapView.delegate = self
+        self.mapView.scrollEnabled = true
+        self.mapView.zoomEnabled = true
     }
     
+   
     
     
     func addAnnotatoinToMap () {
@@ -157,7 +133,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        // Don't want to show a custom image if the annotation is the user's location.
+
         guard !annotation.isKindOfClass(MKUserLocation) else {
             return nil
         }
@@ -200,33 +176,36 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    //        let   sortedGardens = gardens.sort({ $0.0.clLocation.distanceFromLocation(self.currentLocation) < $0.1.clLocation?.distanceFromLocation(self.currentLocation) })
-    //
-    //
-    //        var sortedGardens: [Garden] {
-    //            var sortedGardens: [Garden] = []
-    //
-    //            guard let currentLocation = currentLocation else { return sortedGardens }
-    //
-    //            sortedGardens = gardens.sort({ $0.0.clLocation?.distanceFromLocation(currentLocation) < $0.1.clLocation?.distanceFromLocation(currentLocation) })
-    //
-    //            return sortedGardens
-    //        }
-    //
-    
-    
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
-        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 3000, 3000)
-        self.mapView!.setRegion(region, animated: true)
+        if status == .AuthorizedWhenInUse {
+           locationManager.requestLocation()
+        }
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if regionSet == false {
+            guard let location = locations.first else { return }
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: false)
+            self.region = region
+            regionSet = true
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        
+        print("Error: \(error.localizedDescription)")
+    }
+  
+//    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+//        
+//        let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 3000, 3000)
+//        self.mapView!.setRegion(region, animated: true)
+//    }
+//    
     
     
     
@@ -249,5 +228,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 }
+
 
 
