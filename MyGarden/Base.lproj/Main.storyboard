@@ -10,7 +10,7 @@
         <!--Garden List View Controller-->
         <scene sceneID="PjS-92-YXU">
             <objects>
-                <viewController storyboardIdentifier="GardenListViewController" automaticallyAdjustsScrollViewInsets="NO" id="9jC-fN-4T3" customClass="GardenListViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GardenListViewController" automaticallyAdjustsScrollViewInsets="NO" id="9jC-fN-4T3" customClass="GardenListViewController" customModule="Community_Grown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rAI-7r-ruq"/>
                         <viewControllerLayoutGuide type="bottom" id="hkH-e6-j8Z"/>
@@ -33,7 +33,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenListCell" rowHeight="169" id="E9Q-IE-pWB" customClass="ListTableViewCell" customModule="MyGarden" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenListCell" rowHeight="169" id="E9Q-IE-pWB" customClass="ListTableViewCell" customModule="Community_Grown" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9Q-IE-pWB" id="Sxm-gf-vOG">
@@ -44,40 +44,38 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
-                                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="77f-Vz-LMk">
-                                                    <rect key="frame" x="91" y="118" width="55" height="32"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-9Q-UUl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="55" height="32"/>
-                                                            <color key="backgroundColor" white="1" alpha="0.5595635775862069" colorSpace="calibratedWhite"/>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="Name">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.03963291552743628" green="0.26379398464249354" blue="0.73589510887179488" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="22" name="ChalkboardSE-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                            <nil key="highlightedColor"/>
-                                                            <size key="shadowOffset" width="-1" height="2"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-fj-2Xw">
                                                     <rect key="frame" x="8" y="93" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="68W-xf-o05"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4h-9Q-UUl">
+                                                    <rect key="frame" x="102" y="129" width="55" height="32"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.5595635775862069" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="AbZ-kz-P8z"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Name">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.03963291552743628" green="0.26379398464249354" blue="0.73589510887179488" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="22" name="ChalkboardSE-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="-1" height="2"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="A4h-9Q-UUl" firstAttribute="bottom" secondItem="E3c-Ww-j2q" secondAttribute="bottom" constant="-7" id="2vC-xr-YQZ"/>
                                                 <constraint firstItem="CIo-fj-2Xw" firstAttribute="top" secondItem="Sxm-gf-vOG" secondAttribute="topMargin" constant="85" id="3Cp-iy-wJc"/>
                                                 <constraint firstItem="E3c-Ww-j2q" firstAttribute="leading" secondItem="Sxm-gf-vOG" secondAttribute="leading" id="4a6-mu-aht"/>
+                                                <constraint firstItem="A4h-9Q-UUl" firstAttribute="leading" secondItem="CIo-fj-2Xw" secondAttribute="trailing" constant="19" id="5MW-8G-DhF"/>
                                                 <constraint firstItem="E3c-Ww-j2q" firstAttribute="top" secondItem="Sxm-gf-vOG" secondAttribute="top" id="AwY-4R-qxz"/>
                                                 <constraint firstAttribute="trailing" secondItem="E3c-Ww-j2q" secondAttribute="trailing" id="BIE-Z2-Uti"/>
-                                                <constraint firstItem="77f-Vz-LMk" firstAttribute="leading" secondItem="CIo-fj-2Xw" secondAttribute="trailing" constant="8" symbolic="YES" id="IiA-8h-JDQ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="77f-Vz-LMk" secondAttribute="bottom" constant="10.5" id="Py4-2P-d36"/>
                                                 <constraint firstItem="CIo-fj-2Xw" firstAttribute="bottom" secondItem="E3c-Ww-j2q" secondAttribute="bottom" id="YUH-zj-7PH"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CIo-fj-2Xw" secondAttribute="bottom" constant="-7.5" id="a4v-9Y-0tV"/>
                                                 <constraint firstItem="CIo-fj-2Xw" firstAttribute="leading" secondItem="Sxm-gf-vOG" secondAttribute="leadingMargin" id="adJ-um-8Id"/>
@@ -135,7 +133,7 @@
         <!--Add Garden-->
         <scene sceneID="Qbe-4y-CF1">
             <objects>
-                <viewController id="GMD-RQ-xYP" customClass="AddGardenViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GMD-RQ-xYP" customClass="AddGardenViewController" customModule="Community_Grown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ipc-VO-B3a"/>
                         <viewControllerLayoutGuide type="bottom" id="VrX-pb-aVq"/>
@@ -288,7 +286,7 @@
         <!--Garden Detail View-->
         <scene sceneID="1r8-AT-Cst">
             <objects>
-                <viewController id="DYP-eE-e5R" customClass="GardenDetailViewController" customModule="MyGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DYP-eE-e5R" customClass="GardenDetailViewController" customModule="Community_Grown" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KiQ-XZ-gtm"/>
                         <viewControllerLayoutGuide type="bottom" id="Pyb-bK-c2O"/>

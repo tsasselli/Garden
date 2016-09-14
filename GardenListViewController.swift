@@ -41,7 +41,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     //        return refreshControl
     //    }()
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             if success == true {
                 print("Successfully fetched logged in user record")
             } else {
-                UserController.sharedController.createNewUsers({ 
+                UserController.sharedController.createNewUsers({
                     print("Created new user, no previous record found")
                 })
             }
@@ -78,17 +78,14 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
-    
-    
-    
-        func refresh () {
-            GardenDetailController.sharedController.fetchRecords { (_) in
-    
-                self.refreshControl.endRefreshing()
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }
-            self.tableView.reloadData()
+    func refresh () {
+        GardenDetailController.sharedController.fetchRecords { (_) in
+            
+            self.refreshControl.endRefreshing()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
+        self.tableView.reloadData()
+    }
     
     
     // MARK: TableView DataSource Functions
@@ -112,6 +109,10 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         return item
     }
     
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+    
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -128,7 +129,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func toggleMap(sender: AnyObject) {
         mapHeightConstraint.active = !mapHeightConstraint.active
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.4, options: [], animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
