@@ -30,7 +30,7 @@ class User {
     }
     
     var cloudKitRecordID: CKRecordID?
-    var recordType: String { return Garden.typeKey }
+    var recordType: String { return User.typeKey }
     
     convenience init?(record: CKRecord) {
         guard let firstName = record[User.firstNameKey] as? String,

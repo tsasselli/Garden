@@ -37,25 +37,27 @@ class UserController {
     
     func createNewUsers(completion: () -> Void) {
         cloudKitManager.fetchLoggedInUserRecord { (record, error) in
-            guard let record = record else { completion(); return }
+            guard let record = record else {print("Error: No record found"); completion(); return }
             self.currentUserRecordId = record.recordID
-            guard let userRecordID = self.currentUserRecordId else { completion(); return }
+            guard let userRecordID = self.currentUserRecordId else {print("Error: No userRecordID"); completion(); return }
             
             self.currentUserReference = CKReference(recordID: userRecordID, action: .None)
             
-            self.cloudKitManager.fetchUsernameFromRecordID(userRecordID, completion: { (givenName, familyName) in
-                guard let firstName = givenName,
-                    lastName = familyName,
-                    reference = self.currentUserReference else {
-                        completion()
-                        return
-                }
-                
+//            self.cloudKitManager.fetchUsernameFromRecordID(userRecordID, completion: { (givenName, familyName) in
+//                guard let firstName = givenName,
+//                    lastName = familyName,
+//                    reference = self.currentUserReference else {
+//                        completion()
+//                        return
+//                }
+            
+            guard let reference = self.currentUserReference else {print("Error: No CurrentUserReference Found!"); return }
+            
                 let userRecord = CKRecord(recordType: User.referenceKey)
-                userRecord.setValue(firstName, forKey: User.firstNameKey)
-                userRecord.setValue(lastName, forKey: User.lastNameKey)
+//                userRecord.setValue(firstName, forKey: User.firstNameKey)
+//                userRecord.setValue(lastName, forKey: User.lastNameKey)
                 userRecord.setValue(reference, forKey: User.referenceKey)
-                
+            
                 self.cloudKitManager.saveRecord(userRecord, completion: { (_, error) in
                     if error != nil {
                         print("Error saving current user record to cloudKit: \(error?.localizedDescription)")
@@ -64,7 +66,7 @@ class UserController {
                     print("Successfully saved new user to cloudKit.")
                     completion()
                 })
-            })
+//            })
         }
     }
     
@@ -80,7 +82,7 @@ class UserController {
             
             let predicate = NSPredicate(format: "reference == %@", recordID)
             
-            self.cloudKitManager.fetchRecordsWithType(User.typeKey, predicate: predicate, recordFetchedBlock: { (record) in
+            self.cloudKitManager.fetchRecordsWithType(User.referenceKey, predicate: predicate, recordFetchedBlock: { (record) in
                 self.currentUserRecordId = record.recordID
                 guard let currentUserID = self.currentUserRecordId else {print("Error: No current user found"); return }
                 let user = User(record: record)
