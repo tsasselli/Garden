@@ -114,7 +114,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let garden = GardenDetailController.sharedController.gardens[indexPath.row]
             GardenDetailController.sharedController.deleteRecord(garden)
