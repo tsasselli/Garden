@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GardenDetailViewController: UIViewController {
+class GardenDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var backgroundImageLabel: UIImageView!
@@ -33,9 +33,30 @@ class GardenDetailViewController: UIViewController {
 
         profImageLabel.clipsToBounds = true
     
-        updateWithGarden()
+   //     updateWithGarden()
         
     }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let nameCell = tableView.dequeueReusableCellWithIdentifier("gardenNameCell", forIndexPath: indexPath)
+        
+        let garden = GardenDetailController.sharedController.gardens[indexPath.row]
+
+        
+        nameLabel.text = garden.gdName
+        
+        return nameCell
+    
+    }
+
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+
+    
+
+        
    
     func updateWithGarden () {
         if let garden = garden {

@@ -305,71 +305,101 @@
                                     <constraint firstAttribute="height" constant="78" id="T0F-Sh-Eu4"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ECW-Qb-E5u">
-                                <rect key="frame" x="20" y="267" width="560" height="313"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ee5-KO-JUM">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="28"/>
-                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="24"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-tv-nFe">
-                                        <rect key="frame" x="0.0" y="59" width="560" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmo-FY-LAY">
-                                        <rect key="frame" x="0.0" y="116" width="560" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPT-pR-NuI">
-                                        <rect key="frame" x="0.0" y="173" width="560" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKr-d1-2Qr">
-                                        <rect key="frame" x="0.0" y="230" width="560" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="469-xw-ytm">
-                                        <rect key="frame" x="0.0" y="287" width="560" height="26"/>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-tB-M1w">
+                                <rect key="frame" x="0.0" y="267" width="600" height="333"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections>
+                                    <tableViewSection id="e54-ve-m64">
+                                        <cells>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenNameCell" id="obJ-xq-smH">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="obJ-xq-smH" id="Yg4-HS-qYy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5G-HK-tlQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="i5G-HK-tlQ" secondAttribute="trailing" id="77u-ad-bHR"/>
+                                                        <constraint firstItem="i5G-HK-tlQ" firstAttribute="leading" secondItem="Yg4-HS-qYy" secondAttribute="leading" id="AW1-hB-zYB"/>
+                                                        <constraint firstAttribute="bottom" secondItem="i5G-HK-tlQ" secondAttribute="bottom" id="crF-A2-TuP"/>
+                                                        <constraint firstItem="i5G-HK-tlQ" firstAttribute="top" secondItem="Yg4-HS-qYy" secondAttribute="top" id="tOm-lR-zUE"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenDescriptionCell" id="34G-06-hOk">
+                                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34G-06-hOk" id="qHy-w8-x1M">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenProductsCell" id="9x1-FO-aL5">
+                                                <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9x1-FO-aL5" id="9Qk-xK-3jE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenLocationCell" id="Op3-Ki-A5d">
+                                                <rect key="frame" x="0.0" y="132" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Op3-Ki-A5d" id="RF6-ds-CiB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenContactCell" id="BTz-ld-msf">
+                                                <rect key="frame" x="0.0" y="176" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BTz-ld-msf" id="L6e-Tq-tCF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gardenPhoneCell" id="YCd-fr-TsD">
+                                                <rect key="frame" x="0.0" y="220" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YCd-fr-TsD" id="X2E-4G-5gU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </cells>
+                                    </tableViewSection>
+                                </sections>
+                                <connections>
+                                    <outlet property="dataSource" destination="DYP-eE-e5R" id="pCE-du-dSM"/>
+                                    <outlet property="delegate" destination="DYP-eE-e5R" id="UBi-Pd-V4P"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="ECW-Qb-E5u" secondAttribute="bottom" constant="20" id="7IW-gZ-9bM"/>
-                            <constraint firstItem="ECW-Qb-E5u" firstAttribute="top" secondItem="JIS-wR-GVC" secondAttribute="bottom" id="Asz-UU-W8F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0w8-p5-dns" secondAttribute="trailing" constant="-14" id="B70-De-DFp"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" constant="125" id="ODH-Ai-zJ1"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="bottom" secondItem="0w8-p5-dns" secondAttribute="bottom" id="Ry3-YQ-tFP"/>
+                            <constraint firstItem="f6k-tB-M1w" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="ZWy-F6-OGr"/>
+                            <constraint firstItem="Pyb-bK-c2O" firstAttribute="top" secondItem="f6k-tB-M1w" secondAttribute="bottom" id="bRM-WQ-8SB"/>
                             <constraint firstItem="JIS-wR-GVC" firstAttribute="leading" secondItem="0w8-p5-dns" secondAttribute="leading" id="eoZ-fG-QhP"/>
+                            <constraint firstAttribute="trailing" secondItem="f6k-tB-M1w" secondAttribute="trailing" id="hS4-OF-aMY"/>
                             <constraint firstItem="0w8-p5-dns" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leading" id="hXJ-Ys-9hf"/>
                             <constraint firstItem="0w8-p5-dns" firstAttribute="top" secondItem="KiQ-XZ-gtm" secondAttribute="bottom" id="lK2-ey-ivc"/>
-                            <constraint firstItem="ECW-Qb-E5u" firstAttribute="leading" secondItem="OkW-hP-a8n" secondAttribute="leadingMargin" id="wKj-Bd-fkE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ECW-Qb-E5u" secondAttribute="trailing" id="y9s-wf-R3d"/>
+                            <constraint firstItem="f6k-tB-M1w" firstAttribute="top" secondItem="0w8-p5-dns" secondAttribute="bottom" id="r9c-y6-csM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Garden Detail View" id="Teq-GT-GX0"/>
                     <connections>
                         <outlet property="backgroundImageLabel" destination="0w8-p5-dns" id="ujZ-7P-Wit"/>
-                        <outlet property="contactNameLabel" destination="MKr-d1-2Qr" id="7Ab-lv-LdX"/>
-                        <outlet property="descriptionLabel" destination="rvw-tv-nFe" id="jPq-JM-Vn6"/>
-                        <outlet property="locationLabel" destination="OPT-pR-NuI" id="63F-Ak-k0x"/>
-                        <outlet property="nameLabel" destination="Ee5-KO-JUM" id="19T-1q-NWM"/>
-                        <outlet property="phoneLabel" destination="469-xw-ytm" id="J1b-5o-fj1"/>
-                        <outlet property="productsLabel" destination="jmo-FY-LAY" id="XPG-2e-A4r"/>
+                        <outlet property="nameLabel" destination="i5G-HK-tlQ" id="pVG-fp-9Qk"/>
                         <outlet property="profImageLabel" destination="JIS-wR-GVC" id="NTZ-6d-Gq2"/>
                     </connections>
                 </viewController>
