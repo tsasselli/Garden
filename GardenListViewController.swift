@@ -23,15 +23,31 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
     var geocoder: CLGeocoder = CLGeocoder()
     var regionSet: Bool = false
     var region: MKCoordinateRegion?
-
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GardenDetailController.sharedController.fetchRecords()
+ GardenDetailController.sharedController.fetchRecords()
         
         setupMapView()
+        
+                guard let location = locationManager.location else { return }
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let region = MKCoordinateRegion(center: location.coordinate, span: span)
+                let bigSpan = MKCoordinateSpan(latitudeDelta: 40, longitudeDelta: 40)
+                let bigRegion = MKCoordinateRegion(center: location.coordinate, span: bigSpan)
+                mapView.setRegion(bigRegion, animated: false)
+                self.region = region
+        
+        let seconds = 2.0
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per second
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.mapView.setRegion(region, animated: true)
+        })
+
         
         UserController.sharedController.fetchCurrentUserRecord { (success) in
             if success == true {
@@ -116,7 +132,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         self.mapView?.showsUserLocation = true
         self.mapView.delegate = self
         self.mapView.scrollEnabled = true
-        self.mapView.zoomEnabled = true
+    //    self.mapView.zoomEnabled = true
     }
     
    
@@ -189,7 +205,7 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
             guard let location = locations.first else { return }
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: false)
+            mapView.setRegion(region, animated: true)
             self.region = region
             regionSet = true
         }

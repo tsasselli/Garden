@@ -41,8 +41,9 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         self.nameTextField.nextField = self.descriptionTextField
         self.descriptionTextField.nextField = productTextField
         self.productTextField.nextField = locationTextField
-        self.locationTextField.nextField = self.contactNameTextField
-        self.contactNameTextField.nextField = self.phoneTextField
+        self.locationTextField.nextField = contactNameTextField
+        self.contactNameTextField.nextField = phoneTextField
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
@@ -59,29 +60,58 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
     
     
     func gardensWereUpdated (){
-        
+        GardenDetailController.sharedController.fetchRecords()
     }
     
-    //MARK: Collection View Data Source FUnctions
+      // MARK: Create CloudKit Record Function
     
-    //    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //        <#code#>
-    //    }
-    //
-    //    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    //        <#code#>
-    //    }
-    //
-    // MARK: Create CloudKit Record Function
-    func missingDataAlert() {
+    func missingNameDataAlert() {
         
-        let alertController = UIAlertController(title: "Missing Garden Information", message: "Please check your info and try again.", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Missing Garden Name", message: "Please check your garden name infromation and try again.", preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         
         presentViewController(alertController, animated: true, completion: nil)
         
     }
     
+    func missingDescriptionDataAlert() {
+        
+        let alertController = UIAlertController(title: "Missing Garden Description Info", message: "Please check the garden description and try again.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func missingProductDataAlert() {
+
+        let alertController = UIAlertController(title: "Missing Product Information", message: "Please check the product info and try again.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func missingLocationDataAlert() {
+        
+        let alertController = UIAlertController(title: "Missing Address Information", message: "Please check your the address and try again.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func missingContactDataAlert() {
+        
+        let alertController = UIAlertController(title: "Missing Contact Information", message: "Please check your contact and try again.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func missingPhoneDataAlert() {
+        
+        let alertController = UIAlertController(title: "Missing Address Information", message: "Please check your the address and try again.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+
+
+
     
     @IBAction func createGarden(sender: AnyObject) {
         
@@ -99,12 +129,25 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         
         guard let newlocation = location else { return }
         
-        if gardenName?.characters.count == 0 || gardenBio?.characters.count == 0 || product?.characters.count == 0 || location?.characters.count == 0 || contact?.characters.count == 0 || phone?.characters.count == 0 || profileImg == nil || backgroundImgs == nil  {
-            missingDataAlert()
+        if gardenName?.characters.count == 0 {
+            missingNameDataAlert()
+        } else if
+            gardenBio?.characters.count == 0 {
+            missingDescriptionDataAlert()
+        } else if
+            product?.characters.count == 0 {
+            missingProductDataAlert()
+        } else if
+            location?.characters.count == 0 {
+            missingLocationDataAlert()
+        } else if
+            contact?.characters.count == 0 {
+            missingContactDataAlert()
+        } else if
+            phone?.characters.count == 0 {
+            missingPhoneDataAlert()
         } else {
-            
-            
-            
+        
             forwardGeoCodeAddress(newlocation) { (location) in
                 
                 AddGarderController.sharedController.createNewGarden(gardenName, gdBio: gardenBio, gdProducts: product, gdLocation: location, gdContact: contact, gdPhone: phone, profileImgData: profImg!, backgroundImg: backgroundImgs!, gdAddress: self.locationTextField.text, /* collectionViewImg: (collectionViewImgs)!*/ completion: { (_) in
@@ -119,6 +162,10 @@ class AddGardenViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
+   
+    
+
+
         
         //MARK: Forward Geo-Coding
         

@@ -40,7 +40,7 @@ class GardenDetailViewController: UIViewController {
     func updateWithGarden () {
         if let garden = garden {
 
-            nameLabel.text = ("Garden Name: \(garden.gdName ?? "NO Garden Name Found")")
+            nameLabel.text = (" \(garden.gdName ?? "NO Garden Name Found")")
             phoneLabel.text = ("Phone Number: \(garden.gdPhone ?? "No phone number found")")
             contactNameLabel.text = ("Contact Name: \(garden.gdContact ?? "No Contact Information Found")")
             descriptionLabel.text = ("Description: \(garden.gdBio ?? "NO description fetched")")
