@@ -32,23 +32,6 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         
         setupMapView()
         
-                guard let location = locationManager.location else { return }
-                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                let region = MKCoordinateRegion(center: location.coordinate, span: span)
-                let bigSpan = MKCoordinateSpan(latitudeDelta: 40, longitudeDelta: 40)
-                let bigRegion = MKCoordinateRegion(center: location.coordinate, span: bigSpan)
-                mapView.setRegion(bigRegion, animated: false)
-                self.region = region
-        
-        let seconds = 2.0
-        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per second
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.mapView.setRegion(region, animated: true)
-        })
-
-        
         UserController.sharedController.fetchCurrentUserRecord { (success) in
             if success == true {
                 print("Successfully fetched logged in user record")
@@ -121,6 +104,23 @@ class GardenListViewController: UIViewController, UITableViewDataSource, UITable
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.4, options: [], animations: {
             self.view.layoutIfNeeded()
             }, completion: nil)
+        
+        guard let location = locationManager.location else { return }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        let bigSpan = MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25)
+        let bigRegion = MKCoordinateRegion(center: location.coordinate, span: bigSpan)
+        mapView.setRegion(bigRegion, animated: false)
+        self.region = region
+        
+        let seconds = 2.0
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per second
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.mapView.setRegion(region, animated: true)
+        })
+
     }
     
     func setupMapView () {
